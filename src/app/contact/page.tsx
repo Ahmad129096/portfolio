@@ -18,7 +18,7 @@ export default function Contact() {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2 text-center mb-12"
+            className="h2 text-center mb:2 xl:mb-12"
           >
             Let&apos;s <span className="text-accent">connect.</span>
           </motion.h2>
@@ -28,7 +28,7 @@ export default function Contact() {
             animate="show"
             exit="hidden"
             action=""
-            className="flex-1 flex flex-col gap-6 w-full mx-auto"
+            className="flex-1 flex flex-col gap-2 xl:gap-6 w-full mx-auto"
           >
             <div className="flex gap-x-6 w-full">
               <input type="text" placeholder="name" className="input" />

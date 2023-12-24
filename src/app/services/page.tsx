@@ -9,7 +9,7 @@ export default function Services() {
   return (
     <div className="w-full h-full bg-primary/30 py-36 flex items-center">
       <Circles />
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-10 xl:mt-0">
         <div className="flex flex-col xl:flex-row gap-x-8">
           <div
             className="text-center flex xl:w-[30vm] flex-col lg:text-left

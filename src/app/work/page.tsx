@@ -20,7 +20,7 @@ export default function Work() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="h2 xl:mt-12"
+              className="h2 mb-0 mt-10 xl:mb-2 xl:mt-12"
             >
               My work <span className="text-accent">.</span>
             </motion.h2>
@@ -29,7 +29,7 @@ export default function Work() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="mb-4 max-w-[400px] mx-auto lg:mx-0"
+              className="mb:0 xl:mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
               aliquid voluptatibus omnis quidem ducimus, adipisci fugit sapiente
