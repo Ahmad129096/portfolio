@@ -8,7 +8,7 @@ import ParticlesContainer from "@/components/ParticlesContainer";
 export default function Home() {
   return (
     <>
-      <div className="bg-primary/60 h-full">
+      <div className="bg-primary/30 h-full">
         <div
           className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30
         to-black/10"
@@ -22,7 +22,7 @@ export default function Home() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="h1"
+              className="h1 mt-5 xl:mt-0"
             >
               Transforming ideas <br /> Into{" "}
               <span className="text-accent">Digital Reality</span>
@@ -32,7 +32,7 @@ export default function Home() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
+              className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-5 xl:mb-16"
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
               enim doloribus itaque temporibus consequatur quia quibusdam
