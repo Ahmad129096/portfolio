@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`page bg-black text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
+        className={`page bg-primary/100 text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
       >
         <TopLeftImg />
         <Nav />
