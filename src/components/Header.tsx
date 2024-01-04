@@ -11,7 +11,7 @@ const Header = () => {
         >
           <Link href="/" className="font-bold text-lg xl:text-[30px]">
             <span className="text-accent">Elevate</span>{" "}
-            <span className="bg-accent p-2 rounded-md"> Tech</span>
+            <span className=""> Tech</span>
           </Link>
           <Socials />
         </div>
