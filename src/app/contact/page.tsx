@@ -4,19 +4,34 @@ import { BsArrowRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 import { useForm } from "react-hook-form";
+import { useCustomEmail } from "@/hooks";
 
+const defaultValues = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
 export default function Contact() {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues });
+  const { sendEmail, toggleLoader, loading } = useCustomEmail();
 
+  console.log("message", loading);
   const onSubmit = (values: any) => {
-    console.log(values);
+    sendEmail(values);
+    setTimeout(() => {
+      reset(defaultValues);
+    }, 1000);
+    setTimeout(() => {
+      toggleLoader();
+    }, 2000);
   };
-  console.log(errors);
 
   return (
     <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
@@ -50,7 +65,7 @@ export default function Contact() {
                   type="text"
                   placeholder="name"
                   className="input"
-                  {...register("name", { required: "this field is required" })}
+                  {...register("name", { required: true })}
                 />
                 {errors.name && (
                   <p className="text-accent" role="alert">
@@ -63,11 +78,22 @@ export default function Contact() {
                   type="text"
                   placeholder="email"
                   className="input"
-                  {...register("email", { required: true })}
+                  {...register("email", {
+                    required: true,
+                    pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: "Entered value does not match email format",
+                    },
+                  })}
                 />
-                {errors.email && (
+                {errors.email && errors.email.type === "required" && (
                   <p className="text-accent" role="alert">
                     Please enter email
+                  </p>
+                )}
+                {errors.email && errors.email.type === "pattern" && (
+                  <p className="text-accent" role="alert">
+                    Enter a valid email
                   </p>
                 )}
               </div>
@@ -117,6 +143,7 @@ export default function Contact() {
               />
             </button>
           </motion.form>
+          {loading && <div>Email sent</div>}
         </div>
       </div>
     </div>
