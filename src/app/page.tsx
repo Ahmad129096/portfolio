@@ -32,11 +32,14 @@ export default function Home() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-5 xl:mb-16"
+              className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-5 xl:mb-8"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-              enim doloribus itaque temporibus consequatur quia quibusdam
-              dolores officia labore architecto.
+              Hello, I am Ahmad Hassan, seasoned Mern stack Developer, excels in
+              crafting responsive web applications. Specializing in reusable
+              components and cross-browser compatibility, I contribute to
+              high-quality code and collaborate seamlessly in agile
+              environments. Committed to delivering innovative solutions, I play
+              a vital role in project success.
             </motion.p>
             <div className="flex justify-center xl:hidden relative">
               <ProjectsBtn />

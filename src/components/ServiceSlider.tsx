@@ -11,30 +11,33 @@ import {
 
 // data
 const serviceData = [
-  {
-    icon: <RxCrop />,
-    title: "Branding",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
+  // {
+  //   icon: <RxCrop />,
+  //   title: "Branding",
+  //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  // },
   {
     icon: <RxPencil2 />,
     title: "Design",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description:
+      "Transforms concepts into visual experiences, blending creativity and functionality.",
   },
   {
     icon: <RxDesktop />,
     title: "Development",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description:
+      "Code, debug, test—evolve skills, craft smart, efficient, innovative solutions..",
   },
-  {
-    icon: <RxReader />,
-    title: "Copywriting",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
+  // {
+  //   icon: <RxReader />,
+  //   title: "Copywriting",
+  //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  // },
   {
     icon: <RxRocket />,
     title: "SEO",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description:
+      "Elevate online presence through strategic content optimization techniques..",
   },
 ];
 

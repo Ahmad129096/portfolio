@@ -31,9 +31,10 @@ export default function Work() {
               exit="hidden"
               className="mb:0 xl:mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-              aliquid voluptatibus omnis quidem ducimus, adipisci fugit sapiente
-              esse deserunt quam!
+              Experienced professional adept at managing diverse tasks with
+              precision. Proven ability to navigate challenges and deliver
+              results. Skilled in multitasking, problem-solving, and fostering
+              efficient collaboration.
             </motion.p>
           </div>
           <motion.div

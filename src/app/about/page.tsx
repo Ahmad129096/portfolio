@@ -12,6 +12,7 @@ import {
   FaReact,
   FaWordpress,
   FaFigma,
+  FaNode,
 } from "react-icons/fa";
 
 import {
@@ -38,15 +39,12 @@ const aboutData: any = [
           <SiNextdotjs key="6" />,
           <SiFramer key="5" />,
           <FaWordpress key="4" />,
+          <FaNode key="11" />,
         ],
       },
       {
-        title: "UI/UX Design",
-        icons: [
-          <FaFigma key="3" />,
-          <SiAdobexd key="2" />,
-          <SiAdobephotoshop key="1" />,
-        ],
+        title: "Mobile app development",
+        icons: [<FaReact key="3" />],
       },
     ],
   },
@@ -54,29 +52,25 @@ const aboutData: any = [
     title: "awards",
     info: [
       {
-        title: "Webby Awards - Honoree",
-        stage: "2011 - 2012",
+        title: "In progress",
+        stage: "",
       },
-      {
-        title: "Adobe Design Achievement Awards - Finalist",
-        stage: "2009 - 2010",
-      },
+      // {
+      //   title: "Adobe Design Achievement Awards - Finalist",
+      //   stage: "2009 - 2010",
+      // },
     ],
   },
   {
     title: "experience",
     info: [
       {
-        title: "UX/UI Designer - XYZ Company",
-        stage: "2012 - 2023",
+        title: "Software enginner - Seebiz Pvt Ltd",
+        stage: "2022 - present",
       },
       {
-        title: "Web Developer - ABC Agency",
-        stage: "2010 - 2012",
-      },
-      {
-        title: "Intern - DEF Corporation",
-        stage: "2008 - 2010",
+        title: "Node js Intern - Bizzclan",
+        stage: "2022",
       },
     ],
   },
@@ -84,16 +78,8 @@ const aboutData: any = [
     title: "credentials",
     info: [
       {
-        title: "Web Development - ABC University, LA, CA",
-        stage: "2011",
-      },
-      {
-        title: "Computer Science Diploma - AV Technical Institute",
-        stage: "2009",
-      },
-      {
-        title: "Certified Graphic Designer - ABC Institute, Los Angeles, CA",
-        stage: "2006",
+        title: "Computer Science - Comsats University",
+        stage: "2018-2022",
       },
     ],
   },
@@ -126,7 +112,7 @@ export default function About() {
             variants={fadeIn("right", 0.4)}
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
           >
-            10 years ago, I began freelancing as a developer. Since then, i have
+            5 years ago, I began freelancing as a developer. Since then, i have
             done remote work for agencies, consulted for startups and
             collaborated on digital products for business and consumer use.
           </motion.p>
@@ -211,12 +197,12 @@ export default function About() {
                 <div className="font-light mb-2 md:mb-0">{item.title}</div>
                 <div className="hidden md:flex">-</div>
                 <div>{item.stage}</div>
-                <div>
-                  {item.icons?.map((icon: any, iconIndex: number) => {
+                <div className="flex gap-x-2">
+                  {item.icons?.map((icon: any, iconIndex: number) => (
                     <div key={iconIndex} className="text-2xl text-white">
                       {icon}
-                    </div>;
-                  })}
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}

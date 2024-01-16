@@ -31,9 +31,9 @@ export default function Services() {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-              aliquid voluptatibus omnis quidem ducimus, adipisci fugit sapiente
-              esse deserunt quam!
+              Elevate your experience with my comprehensive services. I
+              specialize in crafting tailored solutions, adeptly managing tasks,
+              and ensuring seamless collaboration.
             </motion.p>
           </div>
           <motion.div

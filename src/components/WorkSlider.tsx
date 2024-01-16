@@ -6,19 +6,23 @@ const workSlides = {
       images: [
         {
           title: "title",
-          path: "/thumb1.jpg",
+          path: "/thumb1.png",
+          link: "https://books.seebiz.cloud",
         },
         {
           title: "title",
           path: "/thumb2.jpg",
+          link: "https://books.seebiz.cloud",
         },
         {
           title: "title",
           path: "/thumb3.jpg",
+          link: "https://books.seebiz.cloud",
         },
         {
           title: "title",
           path: "/thumb4.jpg",
+          link: "https://books.seebiz.cloud",
         },
       ],
     },
@@ -27,18 +31,22 @@ const workSlides = {
         {
           title: "title",
           path: "/thumb4.jpg",
+          link: "/work",
         },
         {
           title: "title",
-          path: "/thumb1.jpg",
+          path: "/thumb1.png",
+          link: "/work",
         },
         {
           title: "title",
           path: "/thumb2.jpg",
+          link: "work",
         },
         {
           title: "title",
           path: "/thumb3.jpg",
+          link: "work",
         },
       ],
     },
@@ -54,6 +62,8 @@ import { Pagination } from "swiper/modules";
 
 import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
+import Link from "next/link";
+
 const WorkSlider = () => {
   return (
     <Swiper
@@ -83,7 +93,11 @@ const WorkSlider = () => {
                 from-transparent via-[#e838cc] to-[#4a22bd] opacity-0
                 group-hover:opacity-80 transition-all duration-700"
                   ></div>
-                  <div
+
+                  <Link
+                    target="_blank"
+                    href={image.link}
+                    rel="noopener noreferrer"
                     className="absolute bottom-0 translate-y-full
                   group-hover:translate-y-10 group-hover:xl:-translate-y-20
                   transition-all duration-100"
@@ -107,7 +121,7 @@ const WorkSlider = () => {
                         <BsArrowRight />
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             ))}
