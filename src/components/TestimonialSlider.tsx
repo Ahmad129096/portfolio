@@ -2,24 +2,24 @@
 const testimonialData = [
   {
     image: "/t-avt-1.png",
-    name: "Anne Smith",
+    name: "Kiran M",
     position: "Customer",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "Did my project with Ahmad. He is friendly, fast and efficient in what he is doing. heknows the user requirement and communicate in time. I will hire him again if I need",
   },
   {
     image: "/t-avt-2.png",
-    name: "Jane Doe",
+    name: "Md.Shibly S",
     position: "Customer",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "10/10 service, went above and beyond to make sure that all requirements met and took time to help clarrify some questions that I had with the code. Provided quick responses to questions and was able to demonstrate a clear understanding on requirements. Deliverd comfortably ahead of deadline.",
   },
   {
     image: "/t-avt-3.png",
-    name: "Jhon Doe",
+    name: "Aight619",
     position: "Customer",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "Very good gave what I wanted exactly, in the little time i gave him. 100% would work with him again in the future",
   },
 ];
 
