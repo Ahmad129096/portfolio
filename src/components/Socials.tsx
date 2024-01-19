@@ -16,7 +16,7 @@ const Socials = () => {
         <RiInstagramLine />
       </Link>
       <Link
-        href="https://github.com/ahma129096"
+        href="https://github.com/ahmad129096"
         className="hover:text-accent transition-all duration-300"
       >
         <RiGithubLine />
