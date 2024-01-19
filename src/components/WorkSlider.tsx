@@ -11,8 +11,8 @@ const workSlides = {
         },
         {
           title: "title",
-          path: "/thumb2.jpg",
-          link: "https://books.seebiz.cloud",
+          path: "/reilitics2.png",
+          link: "https://www.reilitics.com/",
         },
         {
           title: "title",

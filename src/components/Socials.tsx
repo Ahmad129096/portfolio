@@ -10,18 +10,24 @@ const Socials = () => {
   return (
     <div className="flex items-center gap-x-5 text-lg">
       <Link
+        target="_blank"
+        rel="noopener noreferrer"
         href="https://www.instagram.com/ahmad129096?igsh=cXMwY3VuZ2NtY28z&utm_source=qr"
         className="hover:text-accent transition-all duration-300"
       >
         <RiInstagramLine />
       </Link>
       <Link
+        target="_blank"
+        rel="noopener noreferrer"
         href="https://github.com/ahmad129096"
         className="hover:text-accent transition-all duration-300"
       >
         <RiGithubLine />
       </Link>
       <Link
+        target="_blank"
+        rel="noopener noreferrer"
         href="https://www.linkedin.com/in/ahmad-hassan-792619140/"
         className="hover:text-accent transition-all duration-300"
       >
