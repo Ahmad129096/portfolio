@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import { Sora } from "next/font/google";
 import Header from "@/components/Header";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -31,7 +30,6 @@ export default function RootLayout({
         <Nav />
         <Header />
         {children}
-        <SpeedInsights />
       </body>
     </html>
   );
