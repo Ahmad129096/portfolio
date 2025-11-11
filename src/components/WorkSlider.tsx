@@ -5,48 +5,38 @@ const workSlides = {
     {
       images: [
         {
-          title: "title",
+          title: "Accounts Management System",
           path: "/thumb1.png",
-          link: "https://books.seebiz.cloud",
+          link: "https://books.seebiz.com",
         },
         {
-          title: "title",
+          title: "Reilitics",
           path: "/reilitics2.png",
           link: "https://www.reilitics.com/",
         },
         {
-          title: "title",
-          path: "/thumb3.jpg",
-          link: "https://books.seebiz.cloud",
+          title: "Krub ai",
+          path: "/krubai.png",
+          link: "https://krub.ai",
         },
         {
-          title: "title",
-          path: "/thumb4.jpg",
-          link: "https://books.seebiz.cloud",
+          title: "Inflink",
+          path: "/inflink.png",
+          link: "https://inflink.ae",
         },
       ],
     },
     {
       images: [
         {
-          title: "title",
-          path: "/thumb4.jpg",
-          link: "/work",
+          title: "Folowing",
+          path: "/following.png",
+          link: "https://following.ae",
         },
         {
-          title: "title",
+          title: "Inventory Management System",
           path: "/thumb1.png",
-          link: "/work",
-        },
-        {
-          title: "title",
-          path: "/thumb2.jpg",
-          link: "work",
-        },
-        {
-          title: "title",
-          path: "/thumb3.jpg",
-          link: "work",
+          link: "https://inventory.seebiz.com",
         },
       ],
     },
@@ -106,13 +96,13 @@ const WorkSlider = () => {
                       className="flex items-center gap-x-2
                     text-[13px] tracking-[0.2em]"
                     >
-                      <div className="delay-100">LIVE</div>
-                      <div
+                      <div className="delay-100">{image.title}</div>
+                      {/* <div
                         className="translate-y-[500%] group-hover:translate-y-0
                       transition-all duration-300 delay-150"
                       >
                         PROJECT
-                      </div>
+                      </div> */}
                       <div
                         className="text-xl translate-y-[500%]
                       group-hover:translate-y-0 transition-all duration-300

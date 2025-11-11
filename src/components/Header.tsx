@@ -10,8 +10,8 @@ const Header = () => {
       xl:py-8 mt-10"
         >
           <Link href="/" className="font-bold text-lg xl:text-[30px]">
-            <span className="text-accent">Elevate</span>{" "}
-            <span className=""> Tech</span>
+            <span className="text-accent">Ahmad</span>{" "}
+            <span className="">Hassan</span>
           </Link>
           <Socials />
         </div>
