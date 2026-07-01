@@ -7,41 +7,35 @@ import { fadeIn } from "../variants";
 
 export default function Services() {
   return (
-    <div className="w-full h-full bg-primary/30 py-36 flex items-center">
+    <div className="relative flex min-h-[calc(100vh-16rem)] items-center py-32">
       <Circles />
       <div className="container mx-auto mt-10 xl:mt-0">
-        <div className="flex flex-col xl:flex-row gap-x-8">
-          <div
-            className="text-center flex xl:w-[30vm] flex-col lg:text-left
-          mb-4 xl:mb-0"
-          >
-            <motion.h2
-              variants={fadeIn("up", 0.2)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="h2 xl:mt-8"
-            >
-              My Services <span className="text-accent">.</span>
-            </motion.h2>
-            <motion.p
-              variants={fadeIn("up", 0.4)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="mb-4 max-w-[400px] mx-auto lg:mx-0"
-            >
-              Elevate your experience with my comprehensive services. I
-              specialize in crafting tailored solutions, adeptly managing tasks,
-              and ensuring seamless collaboration.
-            </motion.p>
-          </div>
+        <div className="flex flex-col gap-8 xl:flex-row xl:gap-12">
           <motion.div
-            variants={fadeIn("down", 0.6)}
+            variants={fadeIn("up", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="w-full xl:max-w-[65%]"
+            className="flex flex-col text-center lg:text-left xl:w-[32%]"
+          >
+            <div className="glass-panel p-8 sm:p-10">
+              <p className="mb-3 text-sm uppercase tracking-[0.35em] text-accent/60">
+                Services
+              </p>
+              <h2 className="h2 mb-4">Focused support for product teams.</h2>
+              <p className="mx-auto max-w-[420px] text-left text-base text-slate-300 lg:mx-0">
+                From interface systems to launch-ready web applications, I help
+                teams move quickly without sacrificing polish or
+                maintainability.
+              </p>
+            </div>
+          </motion.div>
+          <motion.div
+            variants={fadeIn("down", 0.4)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="w-full xl:max-w-[68%]"
           >
             <ServiceSlider />
           </motion.div>

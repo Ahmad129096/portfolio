@@ -1,5 +1,4 @@
 "use client";
-// icons
 import {
   HiHome,
   HiUser,
@@ -9,7 +8,6 @@ import {
   HiEnvelope,
 } from "react-icons/hi2";
 
-// nav data
 export const navData = [
   { name: "home", path: "/", icon: <HiHome /> },
   { name: "about", path: "/about", icon: <HiUser /> },
@@ -29,25 +27,24 @@ export const navData = [
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 const Nav = () => {
   const pathname = usePathname();
+
   return (
-    <nav
-      className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max
-    bottom-0 mt-auto xl:right-[2%] z-50 top:0 w-full xl:w-16 xl:max-w-md xl:h-screen"
-    >
-      <div
-        className="flex w-full xl:flex-col items-center justify-between xl:justify-center 
-      gap-y-10 px-4 md:px-40 xl:px-0 h-[80px] bg-white/10 
-      xl:h-max py-8 backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full"
-      >
+    <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[28rem] -translate-x-1/2 px-0 xl:bottom-auto xl:left-auto xl:right-4 xl:top-1/2 xl:w-auto xl:max-w-none xl:-translate-y-1/2">
+      <div className="flex items-center justify-between gap-2 rounded-full border border-white/10 bg-slate-950/80 px-3 py-2.5 text-xl backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,0.45)] xl:flex-col xl:gap-2 xl:px-2 xl:py-3 xl:text-lg">
         {navData.map((link, index) => {
+          const isActive = link.path === pathname;
+
           return (
             <Link
               title={link.name}
-              className={`${
-                link.path === pathname && "text-accent"
-              } relative flex items-center group hover:text-accent transition-all duration-30`}
+              className={`relative flex items-center rounded-full p-2.5 transition-all duration-300 sm:p-3 ${
+                isActive
+                  ? "bg-accent/12 text-accent shadow-[0_8px_20px_rgba(0,0,0,0.45)]"
+                  : "text-slate-300 hover:bg-white/10 hover:text-accent"
+              }`}
               key={index}
               href={link.path}
             >

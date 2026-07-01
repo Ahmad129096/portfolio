@@ -14,22 +14,14 @@ const workSlides = {
           path: "/reilitics2.png",
           link: "https://www.reilitics.com/",
         },
-        {
-          title: "Krub ai",
-          path: "/krubai.png",
-          link: "https://krub.ai",
-        },
-        {
-          title: "Inflink",
-          path: "/inflink.png",
-          link: "https://inflink.ae",
-        },
+        { title: "Krub ai", path: "/krubai.png", link: "https://krub.ai" },
+        { title: "Inflink", path: "/inflink.png", link: "https://inflink.ae" },
       ],
     },
     {
       images: [
         {
-          title: "Folowing",
+          title: "Following",
           path: "/following.png",
           link: "https://following.ae",
         },
@@ -45,11 +37,8 @@ const workSlides = {
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/free-mode";
 import "swiper/css/pagination";
-
 import { Pagination } from "swiper/modules";
-
 import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
@@ -57,60 +46,38 @@ import Link from "next/link";
 const WorkSlider = () => {
   return (
     <Swiper
-      spaceBetween={10}
-      pagination={{
-        clickable: true,
-      }}
+      spaceBetween={16}
+      pagination={{ clickable: true }}
       modules={[Pagination]}
-      className="h-[270px] sm:h-[480px]"
+      className="h-[320px] sm:h-[500px]"
     >
       {workSlides.slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer">
+          <div className="grid grid-cols-2 gap-4">
             {slide.images.map((image, imageIndex) => (
               <div
                 key={imageIndex}
-                className="relative rounded-lg overflow-hidden flex
-              items-center justify-center group"
+                className="group relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-slate-950/60 p-2 shadow-[0_0_30px_rgba(0,240,255,0.05)]"
               >
-                <div
-                  className="flex items-center justify-center relative
-                overflow-hidden group"
-                >
-                  <Image src={image.path} alt="" width={500} height={300} />
-                  <div
-                    className=" absolute inset-0 bg-gradient-to-l
-                from-transparent via-[#e838cc] to-[#4a22bd] opacity-0
-                group-hover:opacity-80 transition-all duration-700"
-                  ></div>
-
+                <Image
+                  src={image.path}
+                  alt={image.title}
+                  width={500}
+                  height={300}
+                  className="h-full w-full rounded-[1rem] object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 rounded-[1.4rem] bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent opacity-80" />
+                <div className="absolute inset-0 flex flex-col justify-end p-4">
+                  <div className="text-sm font-medium text-white">
+                    {image.title}
+                  </div>
                   <Link
                     target="_blank"
                     href={image.link}
                     rel="noopener noreferrer"
-                    className="absolute bottom-0 translate-y-full
-                  group-hover:translate-y-10 group-hover:xl:-translate-y-20
-                  transition-all duration-100"
+                    className="mt-2 inline-flex items-center gap-2 text-sm text-accent/60 transition hover:text-accent"
                   >
-                    <div
-                      className="flex items-center gap-x-2
-                    text-[13px] tracking-[0.2em]"
-                    >
-                      <div className="delay-100">{image.title}</div>
-                      {/* <div
-                        className="translate-y-[500%] group-hover:translate-y-0
-                      transition-all duration-300 delay-150"
-                      >
-                        PROJECT
-                      </div> */}
-                      <div
-                        className="text-xl translate-y-[500%]
-                      group-hover:translate-y-0 transition-all duration-300
-                      delay-200"
-                      >
-                        <BsArrowRight />
-                      </div>
-                    </div>
+                    Visit project <BsArrowRight />
                   </Link>
                 </div>
               </div>

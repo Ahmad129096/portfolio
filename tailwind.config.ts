@@ -20,30 +20,32 @@ const config: Config = {
     },
     extend: {
       colors: {
-        primary: "#131424",
-        secondary: "#393A47",
-        accent: "#F13024",
+        background: "#000000",
+        surface: "#050507",
+        border: "rgba(255,255,255,0.06)",
+        accent: "#6b7280",
+        accentAlt: "#374151",
+        text: "#f8fafc",
+        muted: "#94a3b8",
+      },
+      boxShadow: {
+        glow: "0 6px 30px rgba(0,0,0,0.6)",
       },
       backgroundImage: {
-        explosion: 'url("/bg-explosion.png")',
-        circles: 'url("/bg-circles.png")',
-        circleStar: 'url("/circle-star.svg")',
-        site: 'url("/site-bg.svg")',
+        mesh: "radial-gradient(circle at top left, rgba(255,255,255,0.02), transparent 32%), radial-gradient(circle at bottom right, rgba(255,255,255,0.02), transparent 32%)",
+        grid: "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
       },
       animation: {
         "spin-slow": "spin 6s linear infinite",
+        pulseSoft: "pulse 3s ease-in-out infinite",
       },
       fontFamily: {
-        poppins: [`var(--font-poppins)`, "sans-serif"],
-        sora: [`var(--font-sora)`, "sans-serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
       },
-    },
-  },
-  container: {
-    padding: {
-      DEFAULT: "15px",
     },
   },
   plugins: [require("tailwind-scrollbar")],
 };
+
 export default config;

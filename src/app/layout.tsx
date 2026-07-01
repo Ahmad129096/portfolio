@@ -2,18 +2,24 @@ import TopLeftImg from "@/components/TopLeftImg";
 import "./globals.css";
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
-import { Sora } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import Header from "@/components/Header";
 
-const sora = Sora({
+const headingFont = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-sora",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-heading",
+  weight: ["400", "500", "600", "700"],
+});
+
+const bodyFont = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Ahmad Hassan",
-  description: "Mern stack developer",
+  description: "Full-stack developer crafting polished digital experiences",
 };
 
 export default function RootLayout({
@@ -24,9 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`page bg-primary/100 text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
+        className={`page bg-background text-text ${headingFont.variable} ${bodyFont.variable}`}
       >
-        <TopLeftImg />
         <Nav />
         <Header />
         {children}
