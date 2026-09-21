@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
 import Header from "@/components/Header";
+import PageBackgroundLoader from "@/components/PageBackgroundLoader";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const headingFont = Space_Grotesk({
   subsets: ["latin"],
@@ -43,6 +45,8 @@ export default function RootLayout({
       <body
         className={`page bg-background text-text ${headingFont.variable} ${bodyFont.variable}`}
       >
+        <PageBackgroundLoader />
+        <ScrollProgress />
         <Header />
         {children}
         <Script
