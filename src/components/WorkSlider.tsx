@@ -8,7 +8,14 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 
-const projects = [
+type Project = {
+  title: string;
+  image: string;
+  link: string | null;
+  status?: string;
+};
+
+const projects: Project[] = [
   {
     title: "Accounts Management System",
     image: "/thumb1.png",
@@ -38,6 +45,17 @@ const projects = [
     title: "Inventory Management System",
     image: "/thumb1.png",
     link: "https://inventory.seebiz.com",
+  },
+  {
+    title: "Islam's Final Prophet",
+    image: "/final-prophet.png",
+    link: "https://islamsfinalprophet.com",
+  },
+  {
+    title: "Parking & Event POS",
+    image: "/pos-1.png",
+    link: null,
+    status: "Live · Internal tool",
   },
 ];
 
@@ -70,17 +88,23 @@ const WorkSlider = () => {
                 <h3 className="mb-3 font-heading text-xl font-semibold text-white sm:text-2xl">
                   {project.title}
                 </h3>
-                <p className="mb-5 text-sm text-stone-500">Live &amp; deployed</p>
+                <p className="mb-5 text-sm text-stone-500">
+                  {project.status ?? "Live & deployed"}
+                </p>
                 <div>
-                  <Link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={project.link}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-accent transition hover:gap-3"
-                  >
-                    View project
-                    <HiArrowUpRight />
-                  </Link>
+                  {project.link ? (
+                    <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={project.link}
+                      className="inline-flex items-center gap-2 text-sm font-medium text-accent transition hover:gap-3"
+                    >
+                      View project
+                      <HiArrowUpRight />
+                    </Link>
+                  ) : (
+                    <span className="text-sm text-stone-600">Private</span>
+                  )}
                 </div>
               </div>
             </div>

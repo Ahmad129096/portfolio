@@ -6,7 +6,7 @@ import { HiArrowRight } from "react-icons/hi2";
 import { fadeIn } from "../variants";
 
 const stats = [
-  { value: "6", label: "Live projects" },
+  { value: "8", label: "Featured projects" },
   { value: "100%", label: "Live & deployed" },
 ];
 
@@ -79,7 +79,7 @@ export default function Work() {
             <h3 className="font-heading text-base font-semibold text-white">
               Have a project in mind?
             </h3>
-            <p className="mt-1 max-w-md text-sm text-slate-400">
+            <p className="mt-1 max-w-md text-sm text-stone-400">
               Available for freelance projects, ongoing support, and
               technical consultations.
             </p>
