@@ -60,7 +60,7 @@ const credentials = [
 ];
 
 const stats = [
-  { value: 4, suffix: "+", label: "Years experience" },
+  { value: 5, suffix: "+", label: "Years experience" },
   { value: 20, suffix: "+", label: "Clients" },
   { value: 15, suffix: "+", label: "Projects" },
 ];
@@ -104,8 +104,8 @@ export default function About() {
             </div>
 
             <h2 className="h2 mb-4 text-left">
-              Crafting <span className="text-accent">high-impact</span>{" "}
-              digital experiences.
+              Crafting <span className="text-accent">high-impact</span> digital
+              experiences.
             </h2>
             <p className="mb-6 text-left text-base text-stone-400">
               I&apos;ve been building for the web for over four years,
