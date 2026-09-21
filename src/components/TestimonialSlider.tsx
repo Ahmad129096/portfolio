@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { FaQuoteLeft } from "react-icons/fa";
+
 const testimonialData = [
   {
     image: "/t-avt-1.png",
@@ -22,51 +25,38 @@ const testimonialData = [
   },
 ];
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Pagination, Navigation } from "swiper/modules";
-import { FaQuoteLeft } from "react-icons/fa";
-import Image from "next/image";
-
 const TestimonialSlider = () => {
   return (
-    <Swiper
-      navigation
-      spaceBetween={16}
-      pagination={{ clickable: true }}
-      modules={[Navigation, Pagination]}
-      className="h-[430px]"
-    >
-      {testimonialData.map((person, index) => (
-        <SwiperSlide key={index}>
-          <div className="flex h-full flex-col items-center gap-8 px-4 md:flex-row md:px-10 xl:px-16">
-            <div className="flex w-full max-w-[280px] flex-col items-center rounded-[1.6rem] border border-white/10 bg-slate-900/70 p-6 text-center backdrop-blur-xl">
-              <div className="mb-3 rounded-full border border-accent/12 bg-accent/06 p-2">
-                <Image
-                  alt={person.name}
-                  src={person.image}
-                  width={90}
-                  height={90}
-                  className="rounded-full"
-                />
-              </div>
-              <div className="text-lg font-semibold text-white">
+    <div className="grid gap-5 md:grid-cols-3">
+      {testimonialData.map((person) => (
+        <div
+          key={person.name}
+          className="glass-card flex flex-col p-6 text-left"
+        >
+          <FaQuoteLeft className="mb-4 text-2xl text-stone-700" />
+          <p className="mb-6 flex-1 text-sm text-stone-300">
+            {person.message}
+          </p>
+          <div className="flex items-center gap-3">
+            <div className="overflow-hidden rounded-full border border-white/10">
+              <Image
+                alt={person.name}
+                src={person.image}
+                width={44}
+                height={44}
+                className="h-11 w-11 object-cover"
+              />
+            </div>
+            <div>
+              <div className="text-sm font-semibold text-white">
                 {person.name}
               </div>
-              <div className="text-[11px] uppercase tracking-[0.35em] text-slate-400">
-                {person.position}
-              </div>
-            </div>
-            <div className="flex flex-1 flex-col justify-center rounded-[1.6rem] border border-white/10 bg-slate-950/60 p-8 text-center shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl md:text-left">
-              <FaQuoteLeft className="mx-auto mb-4 text-4xl text-accent/40 md:mx-0 xl:text-5xl" />
-              <div className="text-base text-slate-300">{person.message}</div>
+              <div className="text-xs text-stone-500">{person.position}</div>
             </div>
           </div>
-        </SwiperSlide>
+        </div>
       ))}
-    </Swiper>
+    </div>
   );
 };
 

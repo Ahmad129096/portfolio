@@ -20,24 +20,18 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "#000000",
-        surface: "#050507",
-        border: "rgba(255,255,255,0.06)",
-        accent: "#6b7280",
-        accentAlt: "#374151",
-        text: "#f8fafc",
-        muted: "#94a3b8",
+        background: "#0a0a09",
+        surface: "#141311",
+        border: "rgba(255,255,255,0.08)",
+        accent: "#c9a24d",
+        text: "#eeece6",
+        muted: "#928c7d",
       },
       boxShadow: {
-        glow: "0 6px 30px rgba(0,0,0,0.6)",
-      },
-      backgroundImage: {
-        mesh: "radial-gradient(circle at top left, rgba(255,255,255,0.02), transparent 32%), radial-gradient(circle at bottom right, rgba(255,255,255,0.02), transparent 32%)",
-        grid: "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
+        soft: "0 4px 20px rgba(0,0,0,0.35)",
       },
       animation: {
         "spin-slow": "spin 6s linear infinite",
-        pulseSoft: "pulse 3s ease-in-out infinite",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "sans-serif"],

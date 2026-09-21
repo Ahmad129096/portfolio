@@ -1,70 +1,108 @@
 "use client";
-import {
-  RxPencil2,
-  RxDesktop,
-  RxRocket,
-  RxArrowTopRight,
-} from "react-icons/rx";
+import Link from "next/link";
+import { HiCommandLine, HiRectangleGroup, HiBolt, HiArrowUpRight } from "react-icons/hi2";
+import { FaWordpress } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { FreeMode, Pagination } from "swiper/modules";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper/modules";
 
 const serviceData = [
   {
-    icon: <RxPencil2 />,
-    title: "Design",
+    icon: <HiCommandLine />,
+    title: "Web App Development",
     description:
-      "Transforms concepts into visual experiences, blending creativity and functionality.",
+      "End-to-end engineering of fast, reliable web applications with React and Next.js — from architecture through deployment.",
+    tags: ["Next.js", "React", "Node.js"],
   },
   {
-    icon: <RxDesktop />,
-    title: "Development",
+    icon: <HiRectangleGroup />,
+    title: "UI Systems & Interactions",
     description:
-      "Code, debug, test, and refine products into scalable, elegant solutions.",
+      "Turning designs into clean, reusable component systems with smooth, purposeful motion and consistent styling.",
+    tags: ["Tailwind CSS", "Framer Motion", "Responsive Design"],
   },
   {
-    icon: <RxRocket />,
-    title: "SEO",
+    icon: <HiBolt />,
+    title: "Performance Optimization",
     description:
-      "Elevate online presence through thoughtful content strategy and technical polish.",
+      "Auditing and tightening the front end for faster loads, smaller bundles, and smoother interactions.",
+    tags: ["Core Web Vitals", "Asset Optimization", "Bundle Size"],
+  },
+  {
+    icon: <FaWordpress />,
+    title: "WordPress & CMS Development",
+    description:
+      "Building and customizing WordPress sites for businesses that need a reliable, content-driven web presence.",
+    tags: ["WordPress", "Custom Themes", "Content Migration"],
   },
 ];
 
 const ServiceSlider = () => {
   return (
-    <Swiper
-      breakpoints={{
-        320: { slidesPerView: 1, spaceBetween: 15 },
-        640: { slidesPerView: 3, spaceBetween: 15 },
-      }}
-      freeMode
-      pagination={{ clickable: true }}
-      modules={[FreeMode, Pagination]}
-      className="h-[280px] sm:h-[340px]"
-    >
-      {serviceData.map((item, index) => (
-        <SwiperSlide key={index}>
-          <div className="group flex h-full flex-col justify-between rounded-[1.5rem] border border-white/10 bg-slate-950/55 p-6 shadow-[0_6px_24px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-accent/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
-            <div>
-              <div className="mb-4 inline-flex rounded-full bg-accent/06 p-3 text-3xl text-accent">
-                {item.icon}
+    <div className="relative">
+      <Swiper
+        breakpoints={{
+          320: { slidesPerView: 1, spaceBetween: 16 },
+          768: { slidesPerView: 2, spaceBetween: 16 },
+          1280: { slidesPerView: 2.4, spaceBetween: 16 },
+        }}
+        pagination={{ type: "fraction", el: ".services-pagination" }}
+        navigation={{
+          nextEl: ".services-next",
+          prevEl: ".services-prev",
+        }}
+        modules={[Pagination, Navigation]}
+        className="services-swiper !pb-2"
+      >
+        {serviceData.map((item) => (
+          <SwiperSlide key={item.title}>
+            <div className="glass-card group flex h-full min-h-[320px] flex-col justify-between p-6">
+              <div>
+                <div className="mb-5 text-xl text-accent">{item.icon}</div>
+                <h3 className="mb-3 font-heading text-lg font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="mb-5 text-sm text-stone-400">
+                  {item.description}
+                </p>
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-stone-500">
+                  {item.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
               </div>
-              <div className="mb-2 text-lg font-semibold text-white">
-                {item.title}
-              </div>
-              <p className="max-w-[350px] text-sm text-slate-300">
-                {item.description}
-              </p>
+              <Link
+                href="/contact"
+                className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent transition group-hover:gap-2"
+              >
+                Explore scope
+                <HiArrowUpRight />
+              </Link>
             </div>
-            <div className="mt-6 text-2xl text-slate-400 transition group-hover:text-accent">
-              <RxArrowTopRight />
-            </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div className="mt-4 flex items-center justify-between">
+        <div className="services-pagination text-sm text-stone-500" />
+        <div className="flex items-center gap-2">
+          <button
+            aria-label="Previous service"
+            className="services-prev flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-stone-400 transition hover:border-white/30 hover:text-white"
+          >
+            ‹
+          </button>
+          <button
+            aria-label="Next service"
+            className="services-next flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-stone-400 transition hover:border-white/30 hover:text-white"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

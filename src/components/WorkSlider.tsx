@@ -1,91 +1,111 @@
 "use client";
-
-const workSlides = {
-  slides: [
-    {
-      images: [
-        {
-          title: "Accounts Management System",
-          path: "/thumb1.png",
-          link: "https://books.seebiz.com",
-        },
-        {
-          title: "Reilitics",
-          path: "/reilitics2.png",
-          link: "https://www.reilitics.com/",
-        },
-        { title: "Krub ai", path: "/krubai.png", link: "https://krub.ai" },
-        { title: "Inflink", path: "/inflink.png", link: "https://inflink.ae" },
-      ],
-    },
-    {
-      images: [
-        {
-          title: "Following",
-          path: "/following.png",
-          link: "https://following.ae",
-        },
-        {
-          title: "Inventory Management System",
-          path: "/thumb1.png",
-          link: "https://inventory.seebiz.com",
-        },
-      ],
-    },
-  ],
-};
-
+import Image from "next/image";
+import Link from "next/link";
+import { HiArrowUpRight } from "react-icons/hi2";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-import { BsArrowRight } from "react-icons/bs";
-import Image from "next/image";
-import Link from "next/link";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper/modules";
+
+const projects = [
+  {
+    title: "Accounts Management System",
+    image: "/thumb1.png",
+    link: "https://books.seebiz.com",
+  },
+  {
+    title: "Reilitics",
+    image: "/reilitics2.png",
+    link: "https://www.reilitics.com/",
+  },
+  {
+    title: "Krub.ai",
+    image: "/krubai.png",
+    link: "https://krub.ai",
+  },
+  {
+    title: "Inflink",
+    image: "/inflink.png",
+    link: "https://inflink.ae",
+  },
+  {
+    title: "Following",
+    image: "/following.png",
+    link: "https://following.ae",
+  },
+  {
+    title: "Inventory Management System",
+    image: "/thumb1.png",
+    link: "https://inventory.seebiz.com",
+  },
+];
 
 const WorkSlider = () => {
   return (
-    <Swiper
-      spaceBetween={16}
-      pagination={{ clickable: true }}
-      modules={[Pagination]}
-      className="h-[320px] sm:h-[500px]"
-    >
-      {workSlides.slides.map((slide, index) => (
-        <SwiperSlide key={index}>
-          <div className="grid grid-cols-2 gap-4">
-            {slide.images.map((image, imageIndex) => (
-              <div
-                key={imageIndex}
-                className="group relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-slate-950/60 p-2 shadow-[0_0_30px_rgba(0,240,255,0.05)]"
-              >
+    <div className="relative">
+      <Swiper
+        spaceBetween={16}
+        pagination={{ type: "fraction", el: ".work-pagination" }}
+        navigation={{ nextEl: ".work-next", prevEl: ".work-prev" }}
+        modules={[Pagination, Navigation]}
+        className="work-swiper"
+      >
+        {projects.map((project, index) => (
+          <SwiperSlide key={project.title}>
+            <div className="glass-card grid items-center gap-6 p-5 sm:p-6 md:grid-cols-[1.1fr_0.9fr]">
+              <div className="overflow-hidden rounded-2xl border border-white/10">
                 <Image
-                  src={image.path}
-                  alt={image.title}
-                  width={500}
-                  height={300}
-                  className="h-full w-full rounded-[1rem] object-cover transition duration-500 group-hover:scale-105"
+                  src={project.image}
+                  alt={project.title}
+                  width={640}
+                  height={420}
+                  className="h-[220px] w-full object-cover sm:h-[280px]"
                 />
-                <div className="absolute inset-0 rounded-[1.4rem] bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent opacity-80" />
-                <div className="absolute inset-0 flex flex-col justify-end p-4">
-                  <div className="text-sm font-medium text-white">
-                    {image.title}
-                  </div>
+              </div>
+              <div className="text-left">
+                <p className="mb-2 text-xs text-stone-500">
+                  Project {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mb-3 font-heading text-xl font-semibold text-white sm:text-2xl">
+                  {project.title}
+                </h3>
+                <p className="mb-5 text-sm text-stone-500">Live &amp; deployed</p>
+                <div>
                   <Link
                     target="_blank"
-                    href={image.link}
                     rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-2 text-sm text-accent/60 transition hover:text-accent"
+                    href={project.link}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent transition hover:gap-3"
                   >
-                    Visit project <BsArrowRight />
+                    View project
+                    <HiArrowUpRight />
                   </Link>
                 </div>
               </div>
-            ))}
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div className="mt-4 flex items-center justify-between">
+        <div className="work-pagination text-sm text-stone-500" />
+        <div className="flex items-center gap-2">
+          <button
+            aria-label="Previous project"
+            className="work-prev flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-stone-400 transition hover:border-white/30 hover:text-white"
+          >
+            ‹
+          </button>
+          <button
+            aria-label="Next project"
+            className="work-next flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-stone-400 transition hover:border-white/30 hover:text-white"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
