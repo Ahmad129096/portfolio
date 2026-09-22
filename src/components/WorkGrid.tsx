@@ -113,8 +113,9 @@ const WorkGrid = () => {
               <div className="relative h-[180px] overflow-hidden">
                 <Image
                   src={project.images[0]}
-                  alt={project.title}
+                  alt={`${project.title} project screenshot`}
                   fill
+                  sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>

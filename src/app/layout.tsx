@@ -1,8 +1,9 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import PageBackgroundLoader from "@/components/PageBackgroundLoader";
 import ScrollProgress from "@/components/ScrollProgress";
 
@@ -18,9 +19,103 @@ const bodyFont = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
+const SITE_URL = "https://www.ahmad-hassan.dev";
+const SITE_NAME = "Ahmad Hassan";
+const SITE_DESCRIPTION =
+  "Ahmad Hassan is a full-stack developer building fast, reliable web applications with React, Next.js, and Node.js — from internal business platforms to client products.";
+
 export const metadata: Metadata = {
-  title: "Ahmad Hassan",
-  description: "Full-stack developer crafting polished digital experiences",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Ahmad Hassan — Full-Stack Developer",
+    template: "%s | Ahmad Hassan",
+  },
+  description: SITE_DESCRIPTION,
+  keywords: [
+    "Ahmad Hassan",
+    "full-stack developer",
+    "Next.js developer",
+    "React developer",
+    "Node.js developer",
+    "web developer portfolio",
+  ],
+  authors: [{ name: "Ahmad Hassan", url: SITE_URL }],
+  creator: "Ahmad Hassan",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: "Ahmad Hassan — Full-Stack Developer",
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: "/portfolio-image.png",
+        width: 637,
+        height: 578,
+        alt: "Portrait of Ahmad Hassan",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ahmad Hassan — Full-Stack Developer",
+    description: SITE_DESCRIPTION,
+    images: ["/portfolio-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0a0a09",
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ahmad Hassan",
+  url: SITE_URL,
+  jobTitle: "Full-Stack Developer",
+  description: SITE_DESCRIPTION,
+  image: `${SITE_URL}/portfolio-image.png`,
+  sameAs: [
+    "https://github.com/ahmad129096",
+    "https://www.linkedin.com/in/ahmad-hassan-792619140/",
+  ],
+  knowsAbout: [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Tailwind CSS",
+    "Framer Motion",
+    "WordPress",
+    "React Native",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
 };
 
 const CAL_LOADER = `
@@ -41,6 +136,14 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cal.com" />
         <link rel="preconnect" href="https://app.cal.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </head>
       <body
         className={`page bg-background text-text ${headingFont.variable} ${bodyFont.variable}`}
@@ -48,7 +151,8 @@ export default function RootLayout({
         <PageBackgroundLoader />
         <ScrollProgress />
         <Header />
-        {children}
+        <main>{children}</main>
+        <Footer />
         <Script
           id="cal-loader"
           strategy="afterInteractive"

@@ -9,6 +9,8 @@ const Avatar = () => {
         width={637}
         height={578}
         alt="Portrait of Ahmad Hassan"
+        priority
+        sizes="(min-width: 1280px) 360px, (min-width: 640px) 320px, 280px"
         className="h-full w-full rounded-[1.6rem] object-cover"
       />
     </div>

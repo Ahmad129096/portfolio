@@ -74,7 +74,7 @@ const ServiceSlider = () => {
                 </div>
               </div>
               <Link
-                href="/contact"
+                href="#contact"
                 className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent transition group-hover:gap-2"
               >
                 Explore scope

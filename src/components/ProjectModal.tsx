@@ -70,6 +70,7 @@ const ProjectModal = ({
                 src={project.images[index]}
                 alt={`${project.title} screenshot ${index + 1}`}
                 fill
+                sizes="(min-width: 640px) 768px, 100vw"
                 className="object-cover"
               />
 
