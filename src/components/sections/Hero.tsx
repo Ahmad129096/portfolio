@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "@/app/variants";
 import Avatar from "@/components/Avatar";
+// import TechMarquee from "@/components/TechMarquee";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { HiArrowRight } from "react-icons/hi2";
@@ -22,16 +23,6 @@ const stats = [
   { value: 5, suffix: "+", label: "Years experience" },
   { value: 20, suffix: "+", label: "Clients" },
   { value: 15, suffix: "+", label: "Projects" },
-];
-
-const toolkit = [
-  "React",
-  "Next.js",
-  "Node.js",
-  "TypeScript",
-  "Tailwind CSS",
-  "Framer Motion",
-  "WordPress",
 ];
 
 const Hero = () => {
@@ -69,22 +60,22 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen scroll-mt-20 pb-16 pt-32">
+    <section id="home" className="relative min-h-screen scroll-mt-20 pb-20 pt-36">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 xl:grid-cols-[1.1fr_0.9fr] xl:gap-10">
           <div className="mx-auto max-w-2xl text-center xl:mx-0 xl:text-left">
             <motion.p
-              variants={fadeIn("down", 0.1)}
+              variants={fadeIn("down", 0.05)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.4 }}
-              className="mb-4 text-sm uppercase tracking-[0.2em] text-stone-500"
+              className="mb-4 text-sm uppercase tracking-[0.2em] text-muted"
             >
               Portfolio — 2026
             </motion.p>
 
             <motion.h1
-              variants={fadeIn("down", 0.2)}
+              variants={fadeIn("down", 0.08)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.4 }}
@@ -95,21 +86,21 @@ const Hero = () => {
             </motion.h1>
 
             <motion.p
-              variants={fadeIn("down", 0.25)}
+              variants={fadeIn("down", 0.1)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.4 }}
-              className="mb-6 min-h-[1.75rem] font-heading text-lg text-stone-300"
+              className="mb-6 min-h-[1.75rem] font-heading text-lg text-text"
             >
               {displayedText}
             </motion.p>
 
             <motion.p
-              variants={fadeIn("down", 0.3)}
+              variants={fadeIn("down", 0.12)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.4 }}
-              className="mx-auto mb-8 max-w-2xl text-base text-stone-400 sm:text-lg xl:mx-0"
+              className="mx-auto mb-8 max-w-2xl text-base text-muted sm:text-lg xl:mx-0"
             >
               Hello, I’m Ahmad Hassan — a full-stack developer who turns clean
               architecture, thoughtful UI, and rapid iteration into products
@@ -117,7 +108,7 @@ const Hero = () => {
             </motion.p>
 
             <motion.div
-              variants={fadeIn("down", 0.4)}
+              variants={fadeIn("down", 0.15)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.4 }}
@@ -127,16 +118,18 @@ const Hero = () => {
                 whileTap={{ scale: 0.96 }}
                 whileHover={{ scale: 1.03 }}
                 href="#work"
-                className="group inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-background transition hover:bg-accent/90"
+                className="group btn-primary"
               >
                 View Projects
-                <HiArrowRight className="transition group-hover:translate-x-1" />
+                <span className="btn-primary-icon">
+                  <HiArrowRight />
+                </span>
               </motion.a>
               <motion.a
                 whileTap={{ scale: 0.96 }}
                 whileHover={{ scale: 1.03 }}
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-md border border-white/15 px-6 py-3 text-sm font-medium text-white transition hover:border-white/30"
+                className="btn-secondary"
               >
                 <HiChatBubbleBottomCenterText />
                 Let’s talk
@@ -144,11 +137,11 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
-              variants={fadeIn("down", 0.5)}
+              variants={fadeIn("down", 0.18)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.4 }}
-              className="glass-card mx-auto grid max-w-lg grid-cols-3 divide-x divide-white/10 xl:mx-0"
+              className="glass-card mx-auto grid max-w-lg grid-cols-3 divide-x divide-overlay/10 xl:mx-0"
             >
               {stats.map((stat) => (
                 <div
@@ -156,10 +149,10 @@ const Hero = () => {
                   className="px-4 py-4 text-center xl:text-left"
                 >
                   <div className="text-2xl font-semibold text-accent sm:text-3xl">
-                    <CountUp start={0} end={stat.value} duration={4} />
+                    <CountUp start={0} end={stat.value} duration={1.5} />
                     {stat.suffix}
                   </div>
-                  <div className="mt-1 text-xs text-stone-500">
+                  <div className="mt-1 text-xs text-muted">
                     {stat.label}
                   </div>
                 </div>
@@ -168,13 +161,13 @@ const Hero = () => {
           </div>
 
           <motion.div
-            variants={fadeIn("left", 0.4)}
+            variants={fadeIn("left", 0.15)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             className="relative mx-auto flex flex-col items-center gap-4 xl:mx-0"
           >
-            <p className="text-sm text-stone-500">React · Next.js · Node.js</p>
+            <p className="text-sm text-muted">React · Next.js · Node.js</p>
             <div className="relative flex h-[280px] w-full max-w-[280px] items-center justify-center sm:h-[320px] sm:max-w-[320px] xl:h-[420px] xl:max-w-[360px]">
               <div className="pointer-events-none absolute -inset-16 -z-10">
                 <HeroScene />
@@ -184,33 +177,24 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        <motion.div
-          variants={fadeIn("up", 0.1)}
+        {/* <motion.div
+          variants={fadeIn("up", 0.05)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          className="glass-card mt-14 flex flex-col items-center gap-5 p-6 sm:p-8 xl:flex-row xl:items-center xl:justify-between"
+          className="glass-card mt-14 overflow-hidden p-6 sm:p-8"
         >
-          <div className="text-center xl:text-left">
-            <h3 className="font-heading text-base font-semibold text-white">
+          <div className="mb-6 text-center xl:text-left">
+            <h3 className="font-heading text-base font-semibold text-text">
               Core toolkit
             </h3>
-            <p className="mt-1 max-w-md text-sm text-stone-400">
+            <p className="mt-1 max-w-md text-sm text-muted xl:mx-0">
               The stack I reach for most when shipping clean, fast, and
               maintainable web products.
             </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 xl:justify-end">
-            {toolkit.map((item, index) => (
-              <span key={item} className="text-sm text-stone-400">
-                {item}
-                {index < toolkit.length - 1 && (
-                  <span className="ml-4 text-stone-700">·</span>
-                )}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+          <TechMarquee />
+        </motion.div> */}
       </div>
     </section>
   );

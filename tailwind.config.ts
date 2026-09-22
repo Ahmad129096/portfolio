@@ -1,6 +1,9 @@
 import type { Config } from "tailwindcss";
 
+const withOpacity = (variable: string) => `rgb(var(${variable}) / <alpha-value>)`;
+
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -20,12 +23,13 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "#0a0a09",
-        surface: "#141311",
-        border: "rgba(255,255,255,0.08)",
+        background: withOpacity("--color-background"),
+        surface: withOpacity("--color-surface"),
+        overlay: withOpacity("--color-overlay"),
         accent: "#c9a24d",
-        text: "#eeece6",
-        muted: "#928c7d",
+        ink: "#171310",
+        text: withOpacity("--color-text"),
+        muted: withOpacity("--color-muted"),
       },
       boxShadow: {
         soft: "0 4px 20px rgba(0,0,0,0.35)",

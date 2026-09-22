@@ -51,15 +51,15 @@ const CalComWidget = () => {
 
   return (
     <div>
-      <div className="mb-6 inline-flex rounded-md border border-white/10 p-1">
+      <div className="mb-6 inline-flex rounded-md border border-overlay/10 p-1">
         {durations.map((d) => (
           <button
             key={d.key}
             onClick={() => setActive(d.key)}
             className={`rounded px-4 py-2 text-sm transition ${
               active === d.key
-                ? "bg-accent text-background"
-                : "text-stone-400 hover:text-white"
+                ? "bg-accent text-ink"
+                : "text-muted hover:text-text"
             }`}
           >
             {d.label}

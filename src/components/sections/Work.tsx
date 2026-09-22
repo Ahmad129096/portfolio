@@ -11,22 +11,22 @@ const stats = [
 
 const Work = () => {
   return (
-    <section id="work" className="relative min-h-screen scroll-mt-20 pb-16 pt-28">
+    <section id="work" className="relative min-h-screen scroll-mt-20 pb-20 pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          variants={fadeIn("up", 0.1)}
+          variants={fadeIn("up", 0.05)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           className="mx-auto mb-10 max-w-2xl text-center"
         >
-          <p className="mb-3 text-sm uppercase tracking-[0.2em] text-stone-500">
+          <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted">
             Selected Work
           </p>
           <h2 className="h2 mb-4">
             A portfolio of <span className="text-accent">practical, polished</span> builds.
           </h2>
-          <p className="text-base text-stone-400">
+          <p className="text-base text-muted">
             A curated index of shipped, production-live projects — from
             internal business platforms to client products.
           </p>
@@ -37,7 +37,7 @@ const Work = () => {
                 <div className="text-xl font-semibold text-accent sm:text-2xl">
                   {stat.value}
                 </div>
-                <div className="text-xs text-stone-500">{stat.label}</div>
+                <div className="text-xs text-muted">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -46,18 +46,20 @@ const Work = () => {
             whileTap={{ scale: 0.96 }}
             whileHover={{ scale: 1.03 }}
             href="#contact"
-            className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-background transition hover:bg-accent/90"
+            className="group btn-primary mt-6"
           >
             Discuss a project
-            <HiArrowRight className="transition group-hover:translate-x-1" />
+            <span className="btn-primary-icon">
+              <HiArrowRight />
+            </span>
           </motion.a>
         </motion.div>
 
         <motion.div
-          variants={fadeIn("up", 0.2)}
+          variants={fadeIn("up", 0.08)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0 }}
         >
           <WorkGrid />
         </motion.div>

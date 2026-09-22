@@ -77,7 +77,7 @@ const ProjectModal = ({
               <button
                 onClick={onClose}
                 aria-label="Close"
-                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-background/70 text-white transition hover:border-white/30"
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-sm transition hover:border-white/30"
               >
                 <HiXMark />
               </button>
@@ -91,14 +91,14 @@ const ProjectModal = ({
                       )
                     }
                     aria-label="Previous image"
-                    className="absolute left-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-background/70 text-white transition hover:border-white/30"
+                    className="absolute left-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-sm transition hover:border-white/30"
                   >
                     <HiChevronLeft />
                   </button>
                   <button
                     onClick={() => setIndex((i) => (i + 1) % project.images.length)}
                     aria-label="Next image"
-                    className="absolute right-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-background/70 text-white transition hover:border-white/30"
+                    className="absolute right-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-sm transition hover:border-white/30"
                   >
                     <HiChevronRight />
                   </button>
@@ -120,7 +120,7 @@ const ProjectModal = ({
 
             <div className="p-6 sm:p-8">
               <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                <h3 className="font-heading text-xl font-semibold text-white">
+                <h3 className="font-heading text-xl font-semibold text-text">
                   {project.title}
                 </h3>
                 {project.link ? (
@@ -128,19 +128,19 @@ const ProjectModal = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     href={project.link}
-                    className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-semibold text-background transition hover:bg-accent/90"
+                    className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-accent/90"
                   >
                     Visit live site
                     <HiArrowUpRight />
                   </Link>
                 ) : (
-                  <span className="inline-flex items-center gap-2 rounded-md border border-white/10 px-4 py-2 text-sm text-stone-500">
+                  <span className="inline-flex items-center gap-2 rounded-md border border-overlay/10 px-4 py-2 text-sm text-muted">
                     <HiLockClosed />
                     Private project
                   </span>
                 )}
               </div>
-              <p className="text-sm text-stone-500">
+              <p className="text-sm text-muted">
                 {project.status ?? "Live & deployed"} · {project.category}
               </p>
             </div>

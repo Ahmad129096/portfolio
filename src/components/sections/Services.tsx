@@ -12,15 +12,15 @@ const collaborationModes = [
 
 const Services = () => {
   return (
-    <section id="services" className="relative min-h-screen scroll-mt-20 pb-16 pt-28">
+    <section id="services" className="relative min-h-screen scroll-mt-20 pb-20 pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="mb-6 text-sm uppercase tracking-[0.2em] text-stone-500">
+        <p className="mb-6 text-sm uppercase tracking-[0.2em] text-muted">
           Services
         </p>
 
         <div className="grid gap-6 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
           <motion.div
-            variants={fadeIn("right", 0.1)}
+            variants={fadeIn("right", 0.05)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
@@ -30,23 +30,23 @@ const Services = () => {
               <span className="text-accent">Focused support</span> for
               product teams.
             </h2>
-            <p className="mb-8 text-left text-base text-stone-400">
+            <p className="mb-8 text-left text-base text-muted">
               Partnering with startups, agencies, and product teams to build
               resilient web apps, clean component systems, and interfaces
               that hold up under real use.
             </p>
 
-            <p className="mb-3 text-xs uppercase tracking-[0.2em] text-stone-500">
+            <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted">
               Modes of collaboration
             </p>
             <div className="mb-8 space-y-1">
               {collaborationModes.map((mode) => (
                 <div
                   key={mode.number}
-                  className="flex items-center gap-3 border-b border-white/5 py-3 last:border-0"
+                  className="flex items-center gap-3 border-b border-overlay/5 py-3 last:border-0"
                 >
                   <span className="text-xs text-accent">{mode.number}</span>
-                  <span className="text-sm font-medium text-white">
+                  <span className="text-sm font-medium text-text">
                     {mode.label}
                   </span>
                 </div>
@@ -57,34 +57,36 @@ const Services = () => {
               whileTap={{ scale: 0.96 }}
               whileHover={{ scale: 1.03 }}
               href="#contact"
-              className="group mb-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-background transition hover:bg-accent/90 sm:w-auto"
+              className="group btn-primary mb-4 w-full justify-center sm:w-auto"
             >
               Discuss a project
-              <HiArrowRight className="transition group-hover:translate-x-1" />
+              <span className="btn-primary-icon">
+                <HiArrowRight />
+              </span>
             </motion.a>
-            <div className="flex items-center gap-2 text-xs text-stone-500">
+            <div className="flex items-center gap-2 text-xs text-muted">
               <HiClock />
               Typical sprint: 2–6 weeks · Fixed-scope or ongoing
             </div>
           </motion.div>
 
           <motion.div
-            variants={fadeIn("left", 0.2)}
+            variants={fadeIn("left", 0.08)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
             className="glass-panel min-w-0 p-6 sm:p-8"
           >
-            <div className="mb-6 flex flex-col gap-2 text-xs text-stone-500 sm:flex-row sm:items-center sm:justify-between">
+            <div className="mb-6 flex flex-col gap-2 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
               <span>
-                Discipline: <span className="text-stone-300">Full-Stack Development</span>
+                Discipline: <span className="text-text">Full-Stack Development</span>
               </span>
               <span>
                 Availability: <span className="text-accent">Open for projects</span>
               </span>
             </div>
 
-            <h3 className="mb-6 font-heading text-base font-semibold text-white">
+            <h3 className="mb-6 font-heading text-base font-semibold text-text">
               Specialized practices
             </h3>
 

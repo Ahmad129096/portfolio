@@ -61,13 +61,13 @@ const ServiceSlider = () => {
             <div className="glass-card group flex h-full min-h-[320px] flex-col justify-between p-6">
               <div>
                 <div className="mb-5 text-xl text-accent">{item.icon}</div>
-                <h3 className="mb-3 font-heading text-lg font-semibold text-white">
+                <h3 className="mb-3 font-heading text-lg font-semibold text-text">
                   {item.title}
                 </h3>
-                <p className="mb-5 text-sm text-stone-400">
+                <p className="mb-5 text-sm text-muted">
                   {item.description}
                 </p>
-                <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-stone-500">
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted">
                   {item.tags.map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
@@ -86,17 +86,17 @@ const ServiceSlider = () => {
       </Swiper>
 
       <div className="mt-4 flex items-center justify-between">
-        <div className="services-pagination text-sm text-stone-500" />
+        <div className="services-pagination text-sm text-muted" />
         <div className="flex items-center gap-2">
           <button
             aria-label="Previous service"
-            className="services-prev flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-stone-400 transition hover:border-white/30 hover:text-white"
+            className="services-prev flex h-8 w-8 items-center justify-center rounded-full border border-overlay/10 text-muted transition hover:border-overlay/30 hover:text-text"
           >
             ‹
           </button>
           <button
             aria-label="Next service"
-            className="services-next flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-stone-400 transition hover:border-white/30 hover:text-white"
+            className="services-next flex h-8 w-8 items-center justify-center rounded-full border border-overlay/10 text-muted transition hover:border-overlay/30 hover:text-text"
           >
             ›
           </button>

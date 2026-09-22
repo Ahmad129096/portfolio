@@ -4,7 +4,7 @@ import { Stars } from "@react-three/drei";
 
 const PageBackground = () => {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 opacity-40">
+    <div className="pointer-events-none fixed inset-0 -z-10 hidden opacity-40 dark:block">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Stars
           radius={60}

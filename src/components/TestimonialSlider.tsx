@@ -33,12 +33,12 @@ const TestimonialSlider = () => {
           key={person.name}
           className="glass-card flex flex-col p-6 text-left"
         >
-          <FaQuoteLeft className="mb-4 text-2xl text-stone-700" />
-          <p className="mb-6 flex-1 text-sm text-stone-300">
+          <FaQuoteLeft className="mb-4 text-2xl text-muted/40" />
+          <p className="mb-6 flex-1 text-sm text-muted">
             {person.message}
           </p>
           <div className="flex items-center gap-3">
-            <div className="overflow-hidden rounded-full border border-white/10">
+            <div className="overflow-hidden rounded-full border border-overlay/10">
               <Image
                 alt={person.name}
                 src={person.image}
@@ -48,10 +48,10 @@ const TestimonialSlider = () => {
               />
             </div>
             <div>
-              <div className="text-sm font-semibold text-white">
+              <div className="text-sm font-semibold text-text">
                 {person.name}
               </div>
-              <div className="text-xs text-stone-500">{person.position}</div>
+              <div className="text-xs text-muted">{person.position}</div>
             </div>
           </div>
         </div>
