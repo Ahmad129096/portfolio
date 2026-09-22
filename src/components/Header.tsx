@@ -10,7 +10,7 @@ const navData = [
   { name: "About", id: "about" },
   { name: "Services", id: "services" },
   { name: "Work", id: "work" },
-  { name: "Testimonials", id: "testimonials" },
+  // { name: "Testimonials", id: "testimonials" },
   { name: "Contact", id: "contact" },
 ];
 
@@ -37,7 +37,7 @@ const Header = () => {
           setActiveId(visible[0].target.id);
         }
       },
-      { rootMargin: "-30% 0px -60% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+      { rootMargin: "-30% 0px -60% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
 
     sections.forEach((section) => observer.observe(section));
