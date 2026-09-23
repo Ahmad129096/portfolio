@@ -12,7 +12,10 @@ const collaborationModes = [
 
 const Services = () => {
   return (
-    <section id="services" className="relative min-h-screen scroll-mt-20 pb-20 pt-32">
+    <section
+      id="services"
+      className="relative min-h-screen scroll-mt-20 pb-20 pt-32"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <p className="mb-6 text-sm uppercase tracking-[0.2em] text-muted">
           Services
@@ -27,13 +30,13 @@ const Services = () => {
             className="glass-panel p-8 sm:p-10"
           >
             <h2 className="h2 mb-4 text-left">
-              <span className="text-accent">Focused support</span> for
-              product teams.
+              <span className="text-accent">Focused support</span> for product
+              teams.
             </h2>
             <p className="mb-8 text-left text-base text-muted">
               Partnering with startups, agencies, and product teams to build
-              resilient web apps, clean component systems, and interfaces
-              that hold up under real use.
+              resilient web apps, clean component systems, and interfaces that
+              hold up under real use.
             </p>
 
             <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted">
@@ -53,17 +56,6 @@ const Services = () => {
               ))}
             </div>
 
-            <motion.a
-              whileTap={{ scale: 0.96 }}
-              whileHover={{ scale: 1.03 }}
-              href="#contact"
-              className="group btn-primary mb-4 w-full justify-center sm:w-auto"
-            >
-              Discuss a project
-              <span className="btn-primary-icon">
-                <HiArrowRight />
-              </span>
-            </motion.a>
             <div className="flex items-center gap-2 text-xs text-muted">
               <HiClock />
               Typical sprint: 2–6 weeks · Fixed-scope or ongoing
@@ -79,10 +71,12 @@ const Services = () => {
           >
             <div className="mb-6 flex flex-col gap-2 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
               <span>
-                Discipline: <span className="text-text">Full-Stack Development</span>
+                Discipline:{" "}
+                <span className="text-text">Full-Stack Development</span>
               </span>
               <span>
-                Availability: <span className="text-accent">Open for projects</span>
+                Availability:{" "}
+                <span className="text-accent">Open for projects</span>
               </span>
             </div>
 

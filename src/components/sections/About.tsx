@@ -69,7 +69,10 @@ const About = () => {
   const [activeTab, setActiveTab] = useState("skills");
 
   return (
-    <section id="about" className="relative min-h-screen scroll-mt-20 pb-20 pt-32">
+    <section
+      id="about"
+      className="relative min-h-screen scroll-mt-20 pb-20 pt-32"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <p className="mb-6 text-sm uppercase tracking-[0.2em] text-muted">
           About
@@ -134,24 +137,10 @@ const About = () => {
                     <CountUp start={0} end={stat.value} duration={1.5} />
                     {stat.suffix}
                   </div>
-                  <div className="mt-1 text-xs text-muted">
-                    {stat.label}
-                  </div>
+                  <div className="mt-1 text-xs text-muted">{stat.label}</div>
                 </div>
               ))}
             </div>
-
-            <motion.a
-              whileTap={{ scale: 0.96 }}
-              whileHover={{ scale: 1.03 }}
-              href="#contact"
-              className="group btn-primary relative"
-            >
-              Get in touch
-              <span className="btn-primary-icon">
-                <HiArrowRight />
-              </span>
-            </motion.a>
           </motion.div>
 
           <motion.div
@@ -208,9 +197,7 @@ const About = () => {
                     <div className="text-sm font-medium text-text">
                       {item.title}
                     </div>
-                    <div className="mt-1 text-xs text-muted">
-                      {item.stage}
-                    </div>
+                    <div className="mt-1 text-xs text-muted">{item.stage}</div>
                   </div>
                 ))}
               </div>
@@ -229,9 +216,7 @@ const About = () => {
                     <div className="text-sm font-medium text-text">
                       {item.title}
                     </div>
-                    <div className="mt-1 text-xs text-muted">
-                      {item.stage}
-                    </div>
+                    <div className="mt-1 text-xs text-muted">{item.stage}</div>
                   </div>
                 ))}
               </div>

@@ -11,7 +11,10 @@ const stats = [
 
 const Work = () => {
   return (
-    <section id="work" className="relative min-h-screen scroll-mt-20 pb-20 pt-32">
+    <section
+      id="work"
+      className="relative min-h-screen scroll-mt-20 pb-20 pt-32"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={fadeIn("up", 0.05)}
@@ -24,11 +27,12 @@ const Work = () => {
             Selected Work
           </p>
           <h2 className="h2 mb-4">
-            A portfolio of <span className="text-accent">practical, polished</span> builds.
+            A portfolio of{" "}
+            <span className="text-accent">practical, polished</span> builds.
           </h2>
           <p className="text-base text-muted">
-            A curated index of shipped, production-live projects — from
-            internal business platforms to client products.
+            A curated index of shipped, production-live projects — from internal
+            business platforms to client products.
           </p>
 
           <div className="mt-6 flex items-center justify-center gap-8">
@@ -41,18 +45,6 @@ const Work = () => {
               </div>
             ))}
           </div>
-
-          <motion.a
-            whileTap={{ scale: 0.96 }}
-            whileHover={{ scale: 1.03 }}
-            href="#contact"
-            className="group btn-primary mt-6"
-          >
-            Discuss a project
-            <span className="btn-primary-icon">
-              <HiArrowRight />
-            </span>
-          </motion.a>
         </motion.div>
 
         <motion.div
