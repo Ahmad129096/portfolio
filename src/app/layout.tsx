@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     images: ["/portfolio-image.png"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/portfolio--image.png",
   },
 };
 

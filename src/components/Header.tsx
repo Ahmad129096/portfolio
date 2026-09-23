@@ -67,7 +67,11 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <a
               href="#home"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-accent/40 text-sm font-semibold text-accent"
+              className={
+                scrolled
+                  ? "hidden"
+                  : `flex h-8 w-8 items-center justify-center rounded-full border border-accent/40 text-sm font-semibold text-accent`
+              }
             >
               A
             </a>
@@ -107,7 +111,7 @@ const Header = () => {
             })}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 mr-10">
             <div className="hidden items-center gap-1 sm:flex">
               {socialLinks.slice(0, 2).map((link) => (
                 <a
@@ -127,8 +131,13 @@ const Header = () => {
               variant="compact"
               className="hidden sm:inline-flex"
             />
-            <ThemeToggle />
           </div>
+        </div>
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-end pr-4 pt-3">
+        <div className="pointer-events-auto">
+          <ThemeToggle />
         </div>
       </div>
     </header>
