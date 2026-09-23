@@ -231,8 +231,9 @@ html.has-custom-cursor [contenteditable="true"] {
    gsap.matchMedia() queries mirror these media queries exactly.
    --------------------------------------------------------------------- */
 
-/* Tall desktop: pin, fill the viewport, clip the horizontal bleed. */
-@media (min-width: 1024px) and (min-height: 760px) {
+/* Desktop windows tall enough to hold the whole section: pin it, fill the
+   viewport, and clip the horizontal bleed. */
+@media (min-width: 1024px) and (min-height: 640px) {
   .services-stage.is-pinned {
     display: flex;
     flex-direction: column;
@@ -247,6 +248,26 @@ html.has-custom-cursor [contenteditable="true"] {
     overflow: visible;
     margin-inline: 0;
     padding-inline: 0;
+  }
+}
+
+/* Short desktop windows: shed the supporting copy and tighten the type so
+   the pinned content can never exceed 100vh and get clipped again. */
+@media (min-width: 1024px) and (max-height: 820px) {
+  .services-stage.is-pinned {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+  }
+  .services-stage.is-pinned .services-stage-header {
+    margin-bottom: 1.25rem;
+    gap: 1rem;
+  }
+  .services-stage.is-pinned .services-copy {
+    display: none;
+  }
+  .services-stage.is-pinned .services-title {
+    font-size: 2rem;
+    line-height: 1.15;
   }
 }
 

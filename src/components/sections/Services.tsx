@@ -17,15 +17,17 @@ const collaborationModes = [
  * queries in globals.css exactly, so the layout classes the JS adds always
  * agree with the CSS that consumes them.
  *
- *   ≥1024w × ≥760h  → pinned: fills 100vh, scrolls the track sideways
- *   ≥1024w × <760h  → driven: natural height, track moves with page scroll
+ *   ≥1024w × ≥640h  → pinned: holds the viewport while the track scrolls
+ *                     sideways, then hands control back to the page
+ *   ≥1024w × <640h  → driven: natural height, track finishes as soon as the
+ *                     whole section has entered the view
  *   768–1023w       → driven: same, but the header stacks above the cards
  *   <768w           → untouched: native horizontal swipe
  */
-const PIN_QUERY = "(min-width: 1024px) and (min-height: 760px)";
+const PIN_QUERY = "(min-width: 1024px) and (min-height: 640px)";
 const DRIVE_QUERIES = [
   "(min-width: 768px) and (max-width: 1023px)",
-  "(min-width: 1024px) and (max-height: 759px)",
+  "(min-width: 1024px) and (max-height: 639px)",
 ];
 
 const Services = () => {
@@ -50,13 +52,17 @@ const Services = () => {
       }
     };
 
-    // When pinned, the track bleeds past the container to the viewport edge,
-    // so it has more room than the container itself.
+    // The track must stop exactly when its right edge meets the edge that
+    // actually clips it — the section itself when pinned, its own box when
+    // driven. Measuring the real clip box keeps `window.innerWidth` and the
+    // scrollbar from throwing the last card out of alignment.
     const distance = (fullBleed: boolean) => {
       const viewport = track.parentElement;
       if (!viewport) return 1;
       const available = fullBleed
-        ? window.innerWidth - viewport.getBoundingClientRect().left
+        ? section.clientWidth -
+          (viewport.getBoundingClientRect().left -
+            section.getBoundingClientRect().left)
         : viewport.clientWidth;
       return Math.max(track.scrollWidth - available, 1);
     };
@@ -68,9 +74,11 @@ const Services = () => {
       try {
         const scrollTrigger: ScrollTrigger.Vars = fullBleed
           ? {
+              // Section fills the viewport → first card on screen, x = 0.
               trigger: section,
               start: "top top",
-              end: () => `+=${distance(true) + 1}`,
+              // Releases only once the last card has slid fully into view.
+              end: () => `+=${Math.max(distance(true) * 1.6, 420)}`,
               pin: true,
               anticipatePin: 1,
               scrub: 0.7,
@@ -78,9 +86,12 @@ const Services = () => {
               onUpdate: (self) => setProgress(self.progress),
             }
           : {
+              // No pin available here, so start as the section enters and
+              // finish the moment its bottom edge lands — the whole section
+              // (and therefore every card) is on screen when it completes.
               trigger: section,
               start: "top bottom",
-              end: "bottom top",
+              end: "bottom bottom",
               scrub: 0.7,
               invalidateOnRefresh: true,
               onUpdate: (self) => setProgress(self.progress),
@@ -131,7 +142,7 @@ const Services = () => {
       className="services-stage relative scroll-mt-20 py-24"
     >
       <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div className="services-stage-header mb-8 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="max-w-2xl">
             <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted">
               Services
@@ -140,13 +151,13 @@ const Services = () => {
             <SplitReveal
               as="h2"
               delay={0.05}
-              className="mb-3 font-heading text-3xl font-semibold leading-tight tracking-tight sm:text-4xl xl:text-[2.5rem]"
+              className="services-title mb-3 font-heading text-3xl font-semibold leading-tight tracking-tight sm:text-4xl xl:text-[2.5rem]"
             >
               <span className="text-accent">Focused support</span> for startup
               and product teams.
             </SplitReveal>
 
-            <p className="max-w-xl text-sm leading-7 text-muted sm:text-base">
+            <p className="services-copy max-w-xl text-sm leading-7 text-muted sm:text-base">
               Partnering with startups, agencies, and product teams to build
               resilient React, Next.js, and Node.js applications, clean
               component systems, and interfaces that hold up under real use.

@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     images: ["/portfolio-image.png"],
   },
   icons: {
-    icon: "/portfolio--image.png",
+    icon: "/portfolio-image.png",
   },
 };
 
