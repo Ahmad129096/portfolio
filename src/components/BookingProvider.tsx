@@ -80,38 +80,42 @@ export const BookingProvider = ({ children }: { children: ReactNode }) => {
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             />
 
-            <div
-              ref={panelRef}
-              tabIndex={-1}
-              className={`glass-panel relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden outline-none transition duration-300 ${
-                isOpen
-                  ? "translate-y-0 scale-100 opacity-100"
-                  : "translate-y-4 scale-95 opacity-0"
-              }`}
-            >
-              <div className="flex items-start justify-between gap-4 border-b border-overlay/10 px-5 py-4 sm:px-6">
-                <div className="text-left">
-                  <p className="font-heading text-sm font-semibold text-text sm:text-base">
-                    Book a call with Ahmad Hassan
-                  </p>
-                  <p className="mt-0.5 text-xs text-muted sm:text-sm">
-                    Pick a duration, choose a slot — confirmation is instant.
-                  </p>
+              <div
+                ref={panelRef}
+                tabIndex={-1}
+                data-lenis-prevent
+                className={`glass-panel relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden outline-none transition duration-300 ${
+                  isOpen
+                    ? "translate-y-0 scale-100 opacity-100"
+                    : "translate-y-4 scale-95 opacity-0"
+                }`}
+              >
+                <div className="flex items-start justify-between gap-4 border-b border-overlay/10 px-5 py-4 sm:px-6">
+                  <div className="text-left">
+                    <p className="font-heading text-sm font-semibold text-text sm:text-base">
+                      Book a call with Ahmad Hassan
+                    </p>
+                    <p className="mt-0.5 text-xs text-muted sm:text-sm">
+                      Pick a duration, choose a slot — confirmation is instant.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={closeBooking}
+                    aria-label="Close booking"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-overlay/15 text-muted transition hover:border-accent/50 hover:text-accent"
+                  >
+                    <HiXMark />
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={closeBooking}
-                  aria-label="Close booking"
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-overlay/15 text-muted transition hover:border-accent/50 hover:text-accent"
-                >
-                  <HiXMark />
-                </button>
-              </div>
 
-              <div className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6">
-                <CalComWidget />
+                <div
+                  className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6"
+                  data-lenis-prevent
+                >
+                  <CalComWidget />
+                </div>
               </div>
-            </div>
           </div>
         </div>
       )}

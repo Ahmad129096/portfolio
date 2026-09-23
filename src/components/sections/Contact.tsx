@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { HiClock, HiChatBubbleBottomCenterText } from "react-icons/hi2";
 import { fadeIn } from "@/app/variants";
 import BookCallButton from "@/components/BookCallButton";
+import Magnetic from "@/components/Magnetic";
+import SplitReveal from "@/components/SplitReveal";
 
 const Contact = () => {
   return (
@@ -21,19 +23,21 @@ const Contact = () => {
           <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted">
             Contact
           </p>
-          <h2 className="h2 mb-4">
+          <SplitReveal as="h2" className="h2 mb-4" delay={0.05}>
             Let&apos;s <span className="text-accent">connect.</span>
-          </h2>
+          </SplitReveal>
           <p className="mx-auto mb-8 max-w-xl text-base text-muted">
             Book a 15- or 30-minute call about your project. The scheduler opens
             right here in a modal — no new tabs, no back-and-forth emails.
           </p>
 
           <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-            <BookCallButton
-              variant="primary"
-              className="w-full justify-center sm:w-auto"
-            />
+            <Magnetic strength={0.3} className="w-full sm:w-auto">
+              <BookCallButton
+                variant="primary"
+                className="w-full justify-center sm:w-auto"
+              />
+            </Magnetic>
             <a
               href="https://www.linkedin.com/in/ahmad-hassan-792619140/"
               target="_blank"

@@ -7,6 +7,9 @@ import Footer from "@/components/Footer";
 import PageBackgroundLoader from "@/components/PageBackgroundLoader";
 import ScrollProgress from "@/components/ScrollProgress";
 import BookingProvider from "@/components/BookingProvider";
+import SmoothScroll from "@/components/SmoothScroll";
+import Preloader from "@/components/Preloader";
+import CustomCursor from "@/components/CustomCursor";
 
 const headingFont = Space_Grotesk({
   subsets: ["latin"],
@@ -165,11 +168,18 @@ export default function RootLayout({
       >
         <PageBackgroundLoader />
         <ScrollProgress />
+        <div
+          aria-hidden
+          className="grain-overlay pointer-events-none fixed inset-0 z-[95] opacity-[0.03] mix-blend-overlay dark:opacity-[0.05]"
+        />
+        <SmoothScroll />
         <BookingProvider>
           <Header />
           <main>{children}</main>
           <Footer />
         </BookingProvider>
+        <CustomCursor />
+        <Preloader />
         <Script
           id="cal-loader"
           strategy="afterInteractive"

@@ -117,9 +117,12 @@ body {
   }
 
   /* Sticky full-bleed project cards already move with scroll, so they get a
-     ring + glow instead of a translate. */
+     ring + glow instead of a translate. Only box-shadow/border transition —
+     transform and filter are driven frame-by-frame by GSAP ScrollTrigger. */
   .project-card-glow {
-    @apply transition duration-500;
+    transition:
+      box-shadow 0.5s ease,
+      border-color 0.5s ease;
   }
   .project-card-glow:hover,
   .project-card-glow:focus-visible {
@@ -135,6 +138,161 @@ body {
   .icon-link:hover {
     @apply border-accent/40 text-accent;
     box-shadow: 0 0 20px -4px rgb(201 162 77 / 0.6);
+  }
+}
+
+/* ── Momentum scrolling (Lenis) ─────────────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Scroll lock while the intro curtain is up. */
+html.is-locked,
+html.is-locked body {
+  overflow: hidden !important;
+}
+
+/* ── Masked text reveals ────────────────────────────────────────────── */
+.split-root {
+  display: block;
+}
+.split-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.split-unit {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ── Custom cursor ──────────────────────────────────────────────────── */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor select,
+html.has-custom-cursor [contenteditable="true"] {
+  cursor: auto !important;
+}
+
+/* ── Film grain ─────────────────────────────────────────────────────── */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* ── Gold sheen sweep on the primary button ─────────────────────────── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 32%,
+    rgb(255 255 255 / 0.45) 50%,
+    transparent 68%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-primary:hover::after,
+.btn-primary:focus-visible::after {
+  transform: translateX(130%);
+}
+
+/* ── Services stage ─────────────────────────────────────────────────────
+   The section is only allowed to fill and clip the viewport when it is
+   genuinely pinned — tall desktops. Everywhere else it keeps its natural
+   height so nothing can be cut off, and the track is driven by page scroll
+   instead. `is-pinned` / `is-driven` are added by Services.tsx, whose
+   gsap.matchMedia() queries mirror these media queries exactly.
+   --------------------------------------------------------------------- */
+
+/* Tall desktop: pin, fill the viewport, clip the horizontal bleed. */
+@media (min-width: 1024px) and (min-height: 760px) {
+  .services-stage.is-pinned {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    /* keep the first line clear of the fixed header */
+    padding-top: 5rem;
+    padding-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .services-stage.is-pinned .services-viewport {
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+/* Any other desktop: natural section height, track clipped by its own box. */
+@media (min-width: 768px) {
+  .services-stage.is-driven .services-viewport {
+    overflow: hidden;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+/* ── Hero scroll cue ────────────────────────────────────────────────── */
+.scroll-cue {
+  position: relative;
+  width: 1px;
+  height: 52px;
+  overflow: hidden;
+  background: rgb(var(--color-overlay) / 0.14);
+}
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 62%;
+  background: linear-gradient(to bottom, transparent, #c9a24d);
+  animation: cue-drop 2.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes cue-drop {
+  0% {
+    transform: translateY(-110%);
+  }
+  100% {
+    transform: translateY(175%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue::after {
+    animation: none;
+  }
+  .btn-primary::after {
+    display: none;
   }
 }
 

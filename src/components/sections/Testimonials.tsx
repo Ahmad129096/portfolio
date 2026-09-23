@@ -1,6 +1,7 @@
 "use client";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import { motion } from "framer-motion";
+import SplitReveal from "@/components/SplitReveal";
 import { fadeIn } from "@/app/variants";
 
 const Testimonials = () => {
@@ -18,9 +19,9 @@ const Testimonials = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="mb-10 text-center"
         >
-          <h2 className="h2 mb-4">
+          <SplitReveal as="h2" className="h2 mb-4" delay={0.05}>
             What clients <span className="text-accent">say.</span>
-          </h2>
+          </SplitReveal>
           <p className="mx-auto max-w-xl text-base text-muted">
             A few words from the 20+ founders, teams, and independent clients
             I&apos;ve shipped work with.

@@ -1,9 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { HiArrowUpRight, HiLockClosed } from "react-icons/hi2";
 import ProjectModal, { type ModalProject } from "@/components/ProjectModal";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { useIsoLayoutEffect, usePrefersReducedMotion } from "@/lib/motion";
 
 type Category = "Internal Tools" | "Client Work" | "Personal";
 
@@ -117,6 +119,71 @@ const filters: Array<"All" | Category> = [
 const WorkGrid = () => {
   const [active, setActive] = useState<"All" | Category>("All");
   const [selected, setSelected] = useState<Project | null>(null);
+  const stackRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = usePrefersReducedMotion();
+
+  /**
+   * Cards are sticky, so as the next project slides over the current one we
+   * scale, fade and blur it underneath — the "stacked deck" depth effect.
+   */
+  useIsoLayoutEffect(() => {
+    if (reducedMotion) return;
+    const stack = stackRef.current;
+    if (!stack) return;
+
+    const items = Array.from(
+      stack.querySelectorAll<HTMLElement>(".project-stack-item")
+    );
+    if (!items.length) return;
+
+    const mm = gsap.matchMedia();
+    const contexts: gsap.Context[] = [];
+
+    mm.add("(min-width: 768px)", () => {
+      const context = gsap.context(() => {
+        items.forEach((item) => {
+          const card = item.querySelector<HTMLElement>(".project-card-glow");
+          if (!card) return;
+
+          gsap.fromTo(
+            card,
+            { scale: 1, opacity: 1, filter: "blur(0px)" },
+            {
+              scale: 0.9,
+              opacity: 0.25,
+              filter: "blur(7px)",
+              ease: "none",
+              scrollTrigger: {
+                trigger: item,
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+              },
+            }
+          );
+        });
+      }, stack);
+
+      contexts.push(context);
+      const frame = requestAnimationFrame(() => ScrollTrigger.refresh());
+
+      return () => {
+        cancelAnimationFrame(frame);
+        context.revert();
+      };
+    });
+
+    return () => {
+      contexts.forEach((context) => context.revert());
+      mm.revert();
+    };
+  }, [active, reducedMotion]);
+
+  // Closing the modal (or filtering) changes layout height.
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => cancelAnimationFrame(frame);
+  }, [selected]);
 
   const visible =
     active === "All"
@@ -141,7 +208,7 @@ const WorkGrid = () => {
         ))}
       </div>
 
-      <div className="relative">
+      <div className="relative" ref={stackRef}>
         <AnimatePresence mode="popLayout">
           {visible.map((project, index) => {
             const isLast = index === visible.length - 1;
@@ -153,7 +220,9 @@ const WorkGrid = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className={isLast ? "relative" : "relative h-[160vh]"}
+                className={`project-stack-item relative ${
+                  isLast ? "" : "h-[160vh]"
+                }`}
                 style={{ zIndex: index + 1 }}
               >
                 <button

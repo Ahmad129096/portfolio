@@ -76,7 +76,7 @@ const ProjectModal = ({
               <HiXMark />
             </button>
 
-            <div className="min-h-0 flex-1 overflow-y-auto">
+            <div className="min-h-0 flex-1 overflow-y-auto" data-lenis-prevent>
               <div className="relative h-[300px] bg-surface sm:h-[400px]">
                 <Image
                   src={project.images[index]}

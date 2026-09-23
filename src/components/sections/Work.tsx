@@ -1,7 +1,7 @@
 "use client";
 import WorkGrid from "@/components/WorkGrid";
 import { motion } from "framer-motion";
-import { HiArrowRight } from "react-icons/hi2";
+import SplitReveal from "@/components/SplitReveal";
 import { fadeIn } from "@/app/variants";
 
 const stats = [
@@ -26,11 +26,10 @@ const Work = () => {
           <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted">
             Selected Work
           </p>
-          <h2 className="h2 mb-4">
+          <SplitReveal as="h2" className="h2 mb-4" delay={0.05}>
             React &amp; Node.js work,{" "}
             <span className="text-accent">shipped and live.</span>
-          </h2>
-          <p className="text-base text-muted">
+          </SplitReveal>          <p className="text-base text-muted">
             A curated index of shipped, production-live projects — from internal
             business platforms to client products.
           </p>

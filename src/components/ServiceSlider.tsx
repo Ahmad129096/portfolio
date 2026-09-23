@@ -1,12 +1,11 @@
-"use client";
 import Link from "next/link";
-import { HiCommandLine, HiRectangleGroup, HiBolt, HiArrowUpRight } from "react-icons/hi2";
+import {
+  HiCommandLine,
+  HiRectangleGroup,
+  HiBolt,
+  HiArrowUpRight,
+} from "react-icons/hi2";
 import { FaWordpress } from "react-icons/fa";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
 
 const serviceData = [
   {
@@ -39,71 +38,54 @@ const serviceData = [
   },
 ];
 
-const ServiceSlider = () => {
-  return (
-    <div className="relative">
-      <Swiper
-        breakpoints={{
-          320: { slidesPerView: 1, spaceBetween: 16 },
-          768: { slidesPerView: 2, spaceBetween: 16 },
-          1280: { slidesPerView: 2.4, spaceBetween: 16 },
-        }}
-        pagination={{ type: "fraction", el: ".services-pagination" }}
-        navigation={{
-          nextEl: ".services-next",
-          prevEl: ".services-prev",
-        }}
-        modules={[Pagination, Navigation]}
-        className="services-swiper !pb-2"
+/**
+ * The horizontal card track. `Services` wraps this in a ref'd container and
+ * scrubs it sideways with ScrollTrigger on desktop; below `md` (or under a
+ * reduced-motion preference) it falls back to native horizontal swiping.
+ */
+const ServiceSlider = () => (
+  <>
+    {serviceData.map((item, index) => (
+      <article
+        key={item.title}
+        className="glass-card card-glow group flex w-[78vw] max-w-[340px] shrink-0 flex-col p-5 sm:w-[380px] sm:p-6 md:w-[430px]"
       >
-        {serviceData.map((item) => (
-          <SwiperSlide key={item.title}>
-            <div className="glass-card card-glow group flex h-full min-h-[320px] flex-col justify-between p-6">
-              <div>
-                <div className="mb-5 text-xl text-accent">{item.icon}</div>
-                <h3 className="mb-3 font-heading text-lg font-semibold text-text">
-                  {item.title}
-                </h3>
-                <p className="mb-5 text-sm text-muted">
-                  {item.description}
-                </p>
-                <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted">
-                  {item.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-              <Link
-                href="#contact"
-                className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent transition group-hover:gap-2"
-              >
-                Explore scope
-                <HiArrowUpRight />
-              </Link>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      <div className="mt-4 flex items-center justify-between">
-        <div className="services-pagination text-sm text-muted" />
-        <div className="flex items-center gap-2">
-          <button
-            aria-label="Previous service"
-            className="services-prev flex h-8 w-8 items-center justify-center rounded-full border border-overlay/10 text-muted transition hover:border-overlay/30 hover:text-text"
-          >
-            ‹
-          </button>
-          <button
-            aria-label="Next service"
-            className="services-next flex h-8 w-8 items-center justify-center rounded-full border border-overlay/10 text-muted transition hover:border-overlay/30 hover:text-text"
-          >
-            ›
-          </button>
+        <div className="mb-4 flex items-start justify-between gap-4">
+          <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-xl text-accent transition duration-300 group-hover:bg-accent group-hover:text-ink">
+            {item.icon}
+          </span>
+          <span className="font-heading text-sm text-muted">
+            {String(index + 1).padStart(2, "0")}
+          </span>
         </div>
-      </div>
-    </div>
-  );
-};
+
+        <h3 className="mb-2 font-heading text-lg font-semibold text-text">
+          {item.title}
+        </h3>
+
+        <p className="mb-4 text-sm leading-7 text-muted">{item.description}</p>
+
+        <div className="mb-5 flex flex-wrap gap-2">
+          {item.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-overlay/10 px-3 py-1 text-[11px] text-muted transition group-hover:border-overlay/25"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <Link
+          href="#contact"
+          className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-accent transition group-hover:gap-2"
+        >
+          Explore scope
+          <HiArrowUpRight />
+        </Link>
+      </article>
+    ))}
+  </>
+);
 
 export default ServiceSlider;

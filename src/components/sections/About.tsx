@@ -20,6 +20,7 @@ import {
   HiAcademicCap,
 } from "react-icons/hi2";
 import { fadeIn } from "@/app/variants";
+import SplitReveal from "@/components/SplitReveal";
 
 const tabs = [
   { key: "skills", label: "Skills", icon: <HiRectangleGroup /> },
@@ -113,10 +114,10 @@ const About = () => {
               </div>
             </div>
 
-            <h2 className="h2 relative mb-4 text-left">
+            <SplitReveal as="h2" className="h2 relative mb-4 text-left" delay={0.05}>
               Crafting <span className="text-accent">production-grade</span>{" "}
               React &amp; Node.js products.
-            </h2>
+            </SplitReveal>
             <p className="relative mb-6 text-left text-base text-muted">
               I&apos;ve been building for the web for more than five years,
               partnering with startups, agencies, and growing businesses that
