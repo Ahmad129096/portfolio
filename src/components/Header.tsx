@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
+// Image removed — avatar moved to footer
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { RiGithubLine, RiLinkedinBoxLine } from "react-icons/ri";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const navData = [
@@ -106,34 +105,14 @@ const Header = () => {
 
           <div className="flex items-center gap-4">
             <a
+              href="https://cal.com/ahmadhassan/30min"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://github.com/ahmad129096"
-              className="text-lg text-muted transition hover:text-text"
+              className="btn-primary hidden px-4 py-2 text-sm sm:inline-flex"
             >
-              <RiGithubLine />
-            </a>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.linkedin.com/in/ahmad-hassan-792619140/"
-              className="text-lg text-muted transition hover:text-text"
-            >
-              <RiLinkedinBoxLine />
+              Book a call
             </a>
             <ThemeToggle />
-            <a
-              href="#about"
-              className="hidden h-8 w-8 overflow-hidden rounded-full border border-overlay/10 sm:block"
-            >
-              <Image
-                src="/portfolio-image.png"
-                width={32}
-                height={32}
-                alt="Ahmad Hassan"
-                className="h-full w-full object-cover"
-              />
-            </a>
           </div>
         </div>
       </div>
