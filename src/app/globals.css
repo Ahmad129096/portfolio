@@ -16,7 +16,10 @@
   --color-surface: 20 19 17;
   --color-overlay: 255 255 255;
   --color-text: 238 236 230;
-  --color-muted: 146 140 125;
+  /* Secondary body text on the dark theme.
+     #928C7D measured 5.8:1 and was still read as "washed out" grey; this
+     lifts it to ~7.9:1 against --color-background (WCAG AAA for body copy). */
+  --color-muted: 170 164 150;
   color-scheme: dark;
 }
 
@@ -71,6 +74,10 @@ body {
   h4 {
     @apply font-heading tracking-tight;
   }
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-none ring-2 ring-accent/70 ring-offset-2 ring-offset-background;
+  }
   p {
     @apply text-base leading-8 text-muted;
   }
@@ -88,13 +95,46 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-3 rounded-full bg-accent py-1.5 pl-6 pr-1.5 text-sm font-semibold text-ink transition hover:bg-accent/90;
+    @apply inline-flex items-center gap-3 rounded-full bg-accent py-1.5 pl-6 pr-1.5 text-sm font-semibold text-ink transition hover:bg-accent/90 active:scale-95;
   }
   .btn-primary-icon {
     @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-accent transition-transform group-hover:translate-x-0.5;
   }
   .btn-secondary {
-    @apply inline-flex items-center gap-2 rounded-full border border-overlay/15 px-6 py-3 text-sm font-medium text-text transition hover:border-overlay/30 hover:bg-overlay/[0.03];
+    @apply inline-flex items-center gap-2 rounded-full border border-overlay/15 px-6 py-3 text-sm font-medium text-text transition hover:border-overlay/30 hover:bg-overlay/[0.03] active:scale-95;
+  }
+
+  /* Interactive card affordance: lift + gold edge + soft glow on hover.
+     Applied to clickable service cards. */
+  .card-glow {
+    @apply transition duration-300;
+  }
+  .card-glow:hover {
+    @apply -translate-y-1 border-accent/40;
+    box-shadow:
+      0 18px 45px -22px rgb(201 162 77 / 0.75),
+      0 0 0 1px rgb(201 162 77 / 0.2);
+  }
+
+  /* Sticky full-bleed project cards already move with scroll, so they get a
+     ring + glow instead of a translate. */
+  .project-card-glow {
+    @apply transition duration-500;
+  }
+  .project-card-glow:hover,
+  .project-card-glow:focus-visible {
+    box-shadow:
+      0 0 0 1px rgb(201 162 77 / 0.55),
+      0 34px 70px -30px rgb(201 162 77 / 0.65);
+  }
+
+  /* Header / footer profile icons. */
+  .icon-link {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-transparent text-lg text-muted transition duration-300;
+  }
+  .icon-link:hover {
+    @apply border-accent/40 text-accent;
+    box-shadow: 0 0 20px -4px rgb(201 162 77 / 0.6);
   }
 }
 

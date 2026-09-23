@@ -27,8 +27,8 @@ const Work = () => {
             Selected Work
           </p>
           <h2 className="h2 mb-4">
-            A portfolio of{" "}
-            <span className="text-accent">practical, polished</span> builds.
+            React &amp; Node.js work,{" "}
+            <span className="text-accent">shipped and live.</span>
           </h2>
           <p className="text-base text-muted">
             A curated index of shipped, production-live projects — from internal

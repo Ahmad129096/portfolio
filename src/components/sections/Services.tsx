@@ -30,13 +30,13 @@ const Services = () => {
             className="glass-panel p-8 sm:p-10"
           >
             <h2 className="h2 mb-4 text-left">
-              <span className="text-accent">Focused support</span> for product
-              teams.
+              <span className="text-accent">Focused support</span> for startup
+              and product teams.
             </h2>
             <p className="mb-8 text-left text-base text-muted">
               Partnering with startups, agencies, and product teams to build
-              resilient web apps, clean component systems, and interfaces that
-              hold up under real use.
+              resilient React, Next.js, and Node.js applications, clean
+              component systems, and interfaces that hold up under real use.
             </p>
 
             <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted">

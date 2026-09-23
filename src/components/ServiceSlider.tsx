@@ -58,7 +58,7 @@ const ServiceSlider = () => {
       >
         {serviceData.map((item) => (
           <SwiperSlide key={item.title}>
-            <div className="glass-card group flex h-full min-h-[320px] flex-col justify-between p-6">
+            <div className="glass-card card-glow group flex h-full min-h-[320px] flex-col justify-between p-6">
               <div>
                 <div className="mb-5 text-xl text-accent">{item.icon}</div>
                 <h3 className="mb-3 font-heading text-lg font-semibold text-text">

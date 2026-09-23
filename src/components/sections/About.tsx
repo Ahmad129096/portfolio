@@ -108,17 +108,17 @@ const About = () => {
                   Ahmad Hassan
                 </div>
                 <div className="text-sm text-accent">
-                  Full-Stack Developer &amp; UI Systems Builder
+                  Full-Stack React &amp; Node.js Engineer
                 </div>
               </div>
             </div>
 
             <h2 className="h2 relative mb-4 text-left">
-              Crafting <span className="text-accent">high-impact</span> digital
-              experiences.
+              Crafting <span className="text-accent">production-grade</span>{" "}
+              React &amp; Node.js products.
             </h2>
             <p className="relative mb-6 text-left text-base text-muted">
-              I&apos;ve been building for the web for over four years,
+              I&apos;ve been building for the web for more than five years,
               partnering with startups, agencies, and growing businesses that
               need fast-moving, reliable, and polished digital products.
             </p>
@@ -223,7 +223,8 @@ const About = () => {
             )}
 
             <p className="mt-8 border-t border-overlay/10 pt-5 text-left text-sm text-muted">
-              Currently building this portfolio&apos;s redesign.
+              A good share of this work ships under NDA — full case studies and
+              client references available on request.
             </p>
           </motion.div>
         </div>

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageBackgroundLoader from "@/components/PageBackgroundLoader";
 import ScrollProgress from "@/components/ScrollProgress";
+import BookingProvider from "@/components/BookingProvider";
 
 const headingFont = Space_Grotesk({
   subsets: ["latin"],
@@ -164,9 +165,11 @@ export default function RootLayout({
       >
         <PageBackgroundLoader />
         <ScrollProgress />
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <BookingProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </BookingProvider>
         <Script
           id="cal-loader"
           strategy="afterInteractive"

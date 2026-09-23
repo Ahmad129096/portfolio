@@ -6,17 +6,17 @@ import Avatar from "@/components/Avatar";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { HiArrowRight } from "react-icons/hi2";
-import { HiChatBubbleBottomCenterText } from "react-icons/hi2";
 import CountUp from "react-countup";
+import BookCallButton from "@/components/BookCallButton";
 
 const HeroScene = dynamic(() => import("@/components/HeroScene"), {
   ssr: false,
 });
 
 const roles = [
-  "Full-Stack Developer",
-  "UI Systems Builder",
-  "Product-Focused Engineer",
+  "React & Next.js Product Engineer",
+  "Node.js API & Integration Builder",
+  "Startup-Focused UI Engineer",
 ];
 
 const stats = [
@@ -81,8 +81,9 @@ const Hero = () => {
               viewport={{ once: true, amount: 0.4 }}
               className="mb-4 text-4xl font-semibold leading-tight sm:text-5xl xl:text-6xl"
             >
-              Building <span className="text-accent">future-ready</span>
-              <br /> digital products.
+              Full-Stack{" "}
+              <span className="text-accent">React &amp; Node.js</span>
+              <br /> engineer for high-growth startups.
             </motion.h1>
 
             <motion.p
@@ -102,9 +103,10 @@ const Hero = () => {
               viewport={{ once: true, amount: 0.4 }}
               className="mx-auto mb-8 max-w-2xl text-base text-muted sm:text-lg xl:mx-0"
             >
-              Hello, I’m Ahmad Hassan — a full-stack developer who turns clean
-              architecture, thoughtful UI, and rapid iteration into products
-              that feel effortless.
+              Hello, I’m Ahmad Hassan — I help startups and product teams turn
+              clean architecture, thoughtful UI, and rapid iteration into React,
+              Next.js, and Node.js products that ship on schedule and hold up in
+              production.
             </motion.p>
 
             <motion.div
@@ -114,25 +116,18 @@ const Hero = () => {
               viewport={{ once: true, amount: 0.4 }}
               className="mb-10 flex flex-col items-center gap-4 sm:flex-row xl:items-start"
             >
+              <BookCallButton
+                variant="primary"
+                className="w-full justify-center sm:w-auto"
+              />
               <motion.a
                 whileTap={{ scale: 0.96 }}
                 whileHover={{ scale: 1.03 }}
                 href="#work"
-                className="group btn-primary"
+                className="btn-secondary w-full justify-center sm:w-auto"
               >
-                View Projects
-                <span className="btn-primary-icon">
-                  <HiArrowRight />
-                </span>
-              </motion.a>
-              <motion.a
-                whileTap={{ scale: 0.96 }}
-                whileHover={{ scale: 1.03 }}
-                href="#contact"
-                className="btn-secondary"
-              >
-                <HiChatBubbleBottomCenterText />
-                Let’s talk
+                View projects
+                <HiArrowRight />
               </motion.a>
             </motion.div>
 

@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
+import BookCallButton from "@/components/BookCallButton";
+import { socialLinks } from "@/components/Socials";
 
 const navData = [
   { name: "Home", id: "home" },
   { name: "About", id: "about" },
   { name: "Services", id: "services" },
   { name: "Work", id: "work" },
-  // { name: "Testimonials", id: "testimonials" },
+  { name: "Testimonials", id: "testimonials" },
   { name: "Contact", id: "contact" },
 ];
 
@@ -105,15 +107,26 @@ const Header = () => {
             })}
           </nav>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="https://cal.com/ahmadhassan/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary hidden px-4 py-2 text-sm sm:inline-flex"
-            >
-              Book a call
-            </a>
+          <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-1 sm:flex">
+              {socialLinks.slice(0, 2).map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.name}
+                  title={link.name}
+                  className="icon-link"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+            <BookCallButton
+              variant="compact"
+              className="hidden sm:inline-flex"
+            />
             <ThemeToggle />
           </div>
         </div>

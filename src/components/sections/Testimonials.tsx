@@ -22,7 +22,8 @@ const Testimonials = () => {
             What clients <span className="text-accent">say.</span>
           </h2>
           <p className="mx-auto max-w-xl text-base text-muted">
-            A few words from people I&apos;ve worked with.
+            A few words from the 20+ founders, teams, and independent clients
+            I&apos;ve shipped work with.
           </p>
         </motion.div>
 
