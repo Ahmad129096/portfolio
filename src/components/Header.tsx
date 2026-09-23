@@ -85,9 +85,7 @@ const Header = () => {
                   key={link.id}
                   href={`#${link.id}`}
                   className={`relative px-1 py-1 text-sm transition ${
-                    isActive
-                      ? "text-accent"
-                      : "text-muted hover:text-text"
+                    isActive ? "text-accent" : "text-muted hover:text-text"
                   }`}
                 >
                   {link.name}
@@ -95,7 +93,11 @@ const Header = () => {
                     <motion.span
                       layoutId="nav-active-underline"
                       className="absolute inset-x-0 -bottom-1 h-[2px] rounded-full bg-accent"
-                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 32,
+                      }}
                     />
                   )}
                 </a>
