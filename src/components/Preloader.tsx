@@ -15,27 +15,30 @@ const Preloader = () => {
   const counterRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLSpanElement>(null);
   const reducedMotion = usePrefersReducedMotion();
-  const [mounted, setMounted] = useState(true);
+  // The curtain stays mounted after it lifts: unmounting collapsed its four
+  // panels' layout rects in one frame (a full-viewport-height shift) and
+  // un-locking the scrollbar nudged the page 7 px — together a 0.642 CLS.
+  // `visibility: hidden` keeps every rect stable, so neither can score.
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!mounted) return;
-
-    // Safety net: never leave the page locked, whatever happens.
-    const failsafe = window.setTimeout(() => {
-      emitIntroDone();
-      setMounted(false);
-    }, 6000);
-
     const unlock = () => {
       document.documentElement.classList.remove("is-locked");
       window.__lenis?.start();
     };
 
+    // Safety net: never leave the page locked, whatever happens.
+    const failsafe = window.setTimeout(() => {
+      emitIntroDone();
+      unlock();
+      setDone(true);
+    }, 6000);
+
     if (reducedMotion) {
       window.clearTimeout(failsafe);
       unlock();
       emitIntroDone();
-      setMounted(false);
+      setDone(true);
       return;
     }
 
@@ -55,14 +58,14 @@ const Preloader = () => {
         window.clearTimeout(failsafe);
         unlock();
         emitIntroDone();
-        setMounted(false);
+        setDone(true);
       },
     });
 
     timeline
       .to(progress, {
         value: 100,
-        duration: 1.7,
+        duration: 1.1,
         ease: "power2.inOut",
         onUpdate: () => write(progress.value),
       })
@@ -75,9 +78,9 @@ const Preloader = () => {
         rootRef.current?.querySelectorAll(".preloader-panel") ?? [],
         {
           yPercent: -100,
-          duration: 1,
+          duration: 0.85,
           ease: "power4.inOut",
-          stagger: 0.07,
+          stagger: 0.06,
         },
         "-=0.1"
       );
@@ -87,15 +90,15 @@ const Preloader = () => {
       timeline.kill();
       unlock();
     };
-  }, [mounted, reducedMotion]);
-
-  if (!mounted) return null;
+  }, [reducedMotion]);
 
   return (
     <div
       ref={rootRef}
       aria-hidden
-      className="fixed inset-0 z-[100] overflow-hidden"
+      className={`fixed inset-0 z-[100] overflow-hidden${
+        done ? " invisible" : ""
+      }`}
     >
       <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-4">
         {PANELS.map((panel) => (
@@ -116,7 +119,7 @@ const Preloader = () => {
 
         <span
           ref={counterRef}
-          className="font-heading text-[clamp(4.5rem,20vw,13rem)] font-semibold leading-none tracking-tighter text-accent tabular-nums"
+          className="font-heading inline-block w-[3ch] text-center text-[clamp(4.5rem,20vw,13rem)] font-semibold leading-none tracking-tighter text-accent tabular-nums"
         >
           0
         </span>

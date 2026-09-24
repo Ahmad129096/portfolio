@@ -41,7 +41,7 @@ const fragmentShader = /* glsl */ `
   float fbm(vec2 p) {
     float value = 0.0;
     float amplitude = 0.5;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 3; i++) {
       value += amplitude * noise(p);
       p *= 2.02;
       amplitude *= 0.5;
@@ -105,8 +105,11 @@ const Aurora = ({ dark }: { dark: boolean }) => {
 
     const target = pointer.current;
     const current = material.uniforms.uPointer.value as THREE.Vector2;
-    current.x += (target.x - current.x) * 0.03;
-    current.y += (target.y - current.y) * 0.03;
+    // Frame-rate independent lerp (~1.8/s ≈ the old 0.03 @ 60 fps), so the
+    // aurora still tracks the pointer at the throttled 30 fps below.
+    const k = 1 - Math.exp(-1.8 * Math.min(delta, 0.05));
+    current.x += (target.x - current.x) * k;
+    current.y += (target.y - current.y) * k;
   });
 
   return (
@@ -123,6 +126,23 @@ const Aurora = ({ dark }: { dark: boolean }) => {
       />
     </mesh>
   );
+};
+
+/**
+ * Re-renders a `frameloop="demand"` canvas on a fixed cadence. Rendering
+ * every rAF frame kept the main thread saturated under CPU throttling (33 s
+ * of the 39 s main-thread time was unclassified "other" — this loop); 30 fps
+ * is invisible for a slow-moving aurora and halves that cost.
+ */
+const FrameThrottle = ({ fps }: { fps: number }) => {
+  const invalidate = useThree((state) => state.invalidate);
+
+  useEffect(() => {
+    const id = window.setInterval(() => invalidate(), 1000 / fps);
+    return () => window.clearInterval(id);
+  }, [invalidate, fps]);
+
+  return null;
 };
 
 /**
@@ -149,11 +169,12 @@ const PageBackground = () => {
         camera={{ position: [0, 0, 1] }}
         dpr={1}
         gl={{ alpha: true, antialias: false }}
-        frameloop={reducedMotion ? "demand" : "always"}
+        frameloop="demand"
       >
+        {!reducedMotion && <FrameThrottle fps={30} />}
         <Aurora dark={dark} />
         <Sparkles
-          count={45}
+          count={24}
           scale={[14, 10, 2]}
           size={1.8}
           speed={reducedMotion ? 0 : 0.18}

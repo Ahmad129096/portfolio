@@ -20,6 +20,46 @@ const nextConfig = {
       { source: "/contact", destination: "/#contact", permanent: true },
     ];
   },
+  async headers() {
+    // Security headers for Best Practices: clickjacking (XFO + CSP
+    // frame-ancestors), MIME sniffing, COOP origin isolation, strong HSTS,
+    // and a CSP scoped to self + the on-demand Cal.com embed. Cal only
+    // loads when the booking modal opens, so nothing third-party is on the
+    // critical path anymore.
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; " +
+              "script-src 'self' 'unsafe-inline' https://app.cal.com https://cal.com; " +
+              "style-src 'self' 'unsafe-inline'; " +
+              "img-src 'self' data: blob:; " +
+              "font-src 'self' data:; " +
+              "connect-src 'self' https://app.cal.com https://cal.com https://*.cal.com https://*.sentry.io; " +
+              "frame-src 'self' https://app.cal.com https://cal.com; " +
+              "worker-src 'self' blob:; " +
+              "object-src 'none'; base-uri 'self'; form-action 'self'; " +
+              "frame-ancestors 'none'",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

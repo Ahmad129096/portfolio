@@ -9,7 +9,7 @@ import BookCallButton from "@/components/BookCallButton";
 import Magnetic from "@/components/Magnetic";
 import SplitReveal from "@/components/SplitReveal";
 import { fadeIn } from "@/app/variants";
-import { onIntroDone, usePrefersReducedMotion } from "@/lib/motion";
+import { onIntroDone } from "@/lib/motion";
 
 const HeroScene = dynamic(() => import("@/components/HeroScene"), {
   ssr: false,
@@ -29,9 +29,10 @@ const stats = [
 
 const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
   const [ready, setReady] = useState(false);
-  const reducedMotion = usePrefersReducedMotion();
 
-  // Everything in the hero waits for the intro curtain to lift.
+  // Only the typing loop and stat counters wait for the curtain. The hero
+  // copy itself is painted from the first byte (no opacity gate), so LCP
+  // never has to wait for the ~2.3 s intro to finish.
   useEffect(() => {
     const off = onIntroDone(() => setReady(true));
     const failsafe = window.setTimeout(() => setReady(true), 7000);
@@ -74,9 +75,6 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
     return () => clearTimeout(timeout);
   }, [ready]);
 
-  const hidden = !reducedMotion && !ready;
-  const initial = reducedMotion ? "show" : "hidden";
-
   return (
     <section
       id="home"
@@ -87,8 +85,8 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
           <div className="mx-auto max-w-2xl text-center xl:mx-0 xl:text-left">
             <motion.p
               variants={fadeIn("down", 0.05)}
-              initial={initial}
-              animate={hidden ? "hidden" : "show"}
+              initial="show"
+              animate="show"
               className="mb-4 text-sm uppercase tracking-[0.2em] text-muted"
             >
               Portfolio — 2026
@@ -107,8 +105,8 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
 
             <motion.p
               variants={fadeIn("down", 0.1)}
-              initial={initial}
-              animate={hidden ? "hidden" : "show"}
+              initial="show"
+              animate="show"
               className="mb-6 min-h-[1.75rem] font-heading text-lg text-accent"
             >
               {displayedText}
@@ -117,8 +115,8 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
 
             <motion.p
               variants={fadeIn("down", 0.12)}
-              initial={initial}
-              animate={hidden ? "hidden" : "show"}
+              initial="show"
+              animate="show"
               className="mx-auto mb-8 max-w-2xl text-base text-muted sm:text-lg xl:mx-0"
             >
               Hello, I’m Ahmad Hassan — I help startups and product teams turn
@@ -129,8 +127,8 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
 
             <motion.div
               variants={fadeIn("down", 0.15)}
-              initial={initial}
-              animate={hidden ? "hidden" : "show"}
+              initial="show"
+              animate="show"
               className="mb-10 flex flex-col items-center gap-4 sm:flex-row xl:items-start"
             >
               <Magnetic strength={0.3} className="w-full sm:w-auto">
@@ -152,8 +150,8 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
 
             <motion.div
               variants={fadeIn("down", 0.18)}
-              initial={initial}
-              animate={hidden ? "hidden" : "show"}
+              initial="show"
+              animate="show"
               className="glass-card mx-auto grid max-w-lg grid-cols-3 divide-x divide-overlay/10 xl:mx-0"
             >
               {stats.map((stat) => (
@@ -177,8 +175,8 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
 
           <motion.div
             variants={fadeIn("left", 0.2)}
-            initial={initial}
-            animate={hidden ? "hidden" : "show"}
+            initial="show"
+            animate="show"
             className="relative mx-auto flex flex-col items-center gap-4 xl:mx-0"
           >
             <p className="text-sm uppercase tracking-[0.25em] text-muted">

@@ -10,6 +10,7 @@ import {
 } from "react";
 import dynamic from "next/dynamic";
 import { HiXMark } from "react-icons/hi2";
+import { ensureCalLoaded } from "@/lib/cal";
 
 const CalComWidget = dynamic(() => import("@/components/CalComWidget"), {
   ssr: false,
@@ -37,6 +38,10 @@ export const BookingProvider = ({ children }: { children: ReactNode }) => {
   const panelRef = useRef<HTMLDivElement>(null);
 
   const openBooking = useCallback(() => {
+    // Cal.com loads on first open instead of on every page view — the eager
+    // `preload` calls used to pull two full booking documents, three fonts
+    // and six scripts (~2 MB) before anyone clicked anything.
+    ensureCalLoaded();
     setHasOpened(true);
     setIsOpen(true);
   }, []);

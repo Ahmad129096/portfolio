@@ -92,8 +92,8 @@ const Jewel = ({ simple }: JewelProps) => {
             />
           ) : (
             <MeshTransmissionMaterial
-              samples={4}
-              resolution={256}
+              samples={1}
+              resolution={128}
               transmission={1}
               thickness={0.55}
               roughness={0.04}
@@ -131,7 +131,7 @@ const Scene = ({ simple }: JewelProps) => {
       <pointLight position={[-3, -1.5, -2.5]} intensity={14} color={GOLD} />
       <pointLight position={[2.5, 2, -3]} intensity={8} color="#ffe4b0" />
 
-      <Environment resolution={128} frames={1}>
+      <Environment resolution={64} frames={1}>
         <Lightformer
           intensity={3}
           color={GOLD}
@@ -157,7 +157,7 @@ const Scene = ({ simple }: JewelProps) => {
       <Jewel simple={simple} />
 
       <Sparkles
-        count={70}
+        count={36}
         scale={11}
         size={2.6}
         speed={0.25}
@@ -199,7 +199,7 @@ const HeroScene = () => {
         camera={{ position: [0, 0, 5.4], fov: 42 }}
         gl={{
           alpha: true,
-          antialias: true,
+          antialias: false,
           powerPreference: "high-performance",
         }}
         dpr={[1, 1.75]}

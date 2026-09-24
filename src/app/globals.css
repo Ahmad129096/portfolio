@@ -25,6 +25,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep the scrollbar gutter reserved so locking scroll for the intro
+     curtain can't shift the whole page horizontally. */
+  scrollbar-gutter: stable;
 }
 
 .translate-z-0 {
