@@ -30,7 +30,7 @@ const Work = () => {
             React &amp; Node.js work,{" "}
             <span className="text-accent">shipped and live.</span>
           </SplitReveal>          <p className="text-base text-muted">
-            A curated index of shipped, production-live projects — from internal
+            A curated index of shipped, production-live projects, from internal
             business platforms to client products.
           </p>
 

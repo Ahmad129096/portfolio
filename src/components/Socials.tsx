@@ -13,7 +13,7 @@ export type SocialLink = {
 };
 
 /**
- * Shared profile links — imported by the header and footer so the icons can
+ * Shared profile links, imported by the header and footer so the icons can
  * never drift apart. Order matters: GitHub and LinkedIn come first because
  * they are the two profiles the header surfaces.
  */

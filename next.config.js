@@ -8,8 +8,8 @@ const nextConfig = {
   // They MUST be declared here rather than as `redirect()` calls inside
     // `src/app/<route>/page.tsx`. A component-level redirect() on a static
     // route bakes status 307 into the prerender manifest but drops the
-    // Location header entirely, so the server answers 307 with no target —
-    // browsers show a blank page and Search Console reports "Page with
+    // Location header entirely, so the server answers 307 with no target.
+    // Browsers show a blank page and Search Console reports "Page with
     // redirect". Config-level redirects run before the filesystem and always
     // emit a real Location header.
     return [

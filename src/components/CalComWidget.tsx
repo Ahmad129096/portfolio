@@ -27,8 +27,8 @@ const CalComWidget = () => {
 
     const render = () => {
       if (!window.Cal?.ns) {
-        // Loader script (in the root layout) may still be attaching —
-        // retry briefly rather than showing nothing.
+        // Loader script (injected on first open) may still be attaching,
+        // so retry briefly rather than showing nothing.
         setTimeout(render, 50);
         return;
       }

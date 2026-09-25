@@ -14,7 +14,7 @@ type Project = ModalProject & {
 };
 
 /**
- * Case-study copy. `problem`, `stack` and `outcome` are DRAFTS — verify every
+ * Case-study copy. `problem`, `stack` and `outcome` are DRAFTS: verify every
  * number in `outcome` against the real project before publishing.
  */
 const projects: Project[] = [
@@ -124,7 +124,7 @@ const WorkGrid = () => {
 
   /**
    * Cards are sticky, so as the next project slides over the current one we
-   * scale, fade and blur it underneath — the "stacked deck" depth effect.
+   * scale, fade and blur it underneath: the "stacked deck" depth effect.
    */
   useIsoLayoutEffect(() => {
     if (reducedMotion) return;

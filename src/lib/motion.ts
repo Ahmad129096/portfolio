@@ -21,7 +21,7 @@ export const usePrefersReducedMotion = () => {
   return prefers;
 };
 
-/** True only for real pointing devices — used to gate the custom cursor. */
+/** True only for real pointing devices, used to gate the custom cursor. */
 export const useFinePointer = () => {
   const [fine, setFine] = useState(false);
 
@@ -53,16 +53,4 @@ export const useIsCompact = (breakpoint = 900) => {
   return compact;
 };
 
-/** Fired once the intro curtain has finished revealing the page. */
-export const INTRO_DONE_EVENT = "intro:done";
 
-export const emitIntroDone = () => {
-  if (typeof window === "undefined") return;
-  window.dispatchEvent(new CustomEvent(INTRO_DONE_EVENT));
-};
-
-export const onIntroDone = (handler: () => void) => {
-  if (typeof window === "undefined") return () => {};
-  window.addEventListener(INTRO_DONE_EVENT, handler);
-  return () => window.removeEventListener(INTRO_DONE_EVENT, handler);
-};

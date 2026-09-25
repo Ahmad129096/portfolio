@@ -2,7 +2,7 @@
  * Cal.com is only needed once someone decides to book a call.
  *
  * The official loader shim used to be injected from the root layout on every
- * page view — together with two eager `preload` calls that fetched the full
+ * page view, together with two eager `preload` calls that fetched the full
  * 30-min and 15-min booking documents, three fonts and six scripts (~2 MB,
  * ~40 requests, three third-party cookies) before anyone clicked anything.
  *

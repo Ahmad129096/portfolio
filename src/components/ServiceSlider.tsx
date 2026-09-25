@@ -12,7 +12,7 @@ const serviceData = [
     icon: <HiCommandLine />,
     title: "Web App Development",
     description:
-      "End-to-end engineering of fast, reliable web applications with React and Next.js — from architecture through deployment.",
+      "End-to-end engineering of fast, reliable web applications with React and Next.js, from architecture through deployment.",
     tags: ["Next.js", "React", "Node.js"],
   },
   {

@@ -28,7 +28,7 @@ const Contact = () => {
           </SplitReveal>
           <p className="mx-auto mb-8 max-w-xl text-base text-muted">
             Book a 15- or 30-minute call about your project. The scheduler opens
-            right here in a modal — no new tabs, no back-and-forth emails.
+            right here in a modal. No new tabs, no back-and-forth emails.
           </p>
 
           <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">

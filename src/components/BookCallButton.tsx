@@ -20,7 +20,7 @@ type Props = {
  * The single primary action path for the whole site.
  *
  * Header, hero, contact and footer all render this component so "Book a call"
- * always does the same thing — open the Cal.com booking modal.
+ * always does the same thing: open the Cal.com booking modal.
  */
 const BookCallButton = ({
   variant = "primary",

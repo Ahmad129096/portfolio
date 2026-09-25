@@ -10,7 +10,6 @@ import {
 } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import {
-  onIntroDone,
   useIsoLayoutEffect,
   usePrefersReducedMotion,
 } from "@/lib/motion";
@@ -23,7 +22,7 @@ type Props = {
   children: ReactNode;
   as?: Tag;
   className?: string;
-  /** `load` waits for the intro curtain, `scroll` waits for ScrollTrigger. */
+  /** `load` reveals on mount, `scroll` waits for ScrollTrigger. */
   trigger?: "load" | "scroll";
   delay?: number;
   stagger?: number;
@@ -130,12 +129,9 @@ const SplitReveal = ({
     };
 
     if (trigger === "load") {
-      const off = onIntroDone(() => play());
-      const failsafe = window.setTimeout(() => play(), 7000);
-      return () => {
-        off();
-        window.clearTimeout(failsafe);
-      };
+      // No intro curtain anymore: reveal as soon as the section mounts.
+      play();
+      return;
     }
 
     const context = gsap.context(() => {

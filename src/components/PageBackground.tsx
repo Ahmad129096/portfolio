@@ -73,7 +73,7 @@ const Aurora = ({ dark }: { dark: boolean }) => {
   const { size } = useThree();
   const pointer = useRef({ x: 0, y: 0 });
 
-  // Created once and mutated per frame — never recreated on re-render.
+  // Created once and mutated per frame, never recreated on re-render.
   const uniforms = useRef({
     uTime: { value: 0 },
     uAspect: { value: 1 },
@@ -131,7 +131,7 @@ const Aurora = ({ dark }: { dark: boolean }) => {
 /**
  * Re-renders a `frameloop="demand"` canvas on a fixed cadence. Rendering
  * every rAF frame kept the main thread saturated under CPU throttling (33 s
- * of the 39 s main-thread time was unclassified "other" — this loop); 30 fps
+ * of the 39 s main-thread time was unclassified "other", all from this loop); 30 fps
  * is invisible for a slow-moving aurora and halves that cost.
  */
 const FrameThrottle = ({ fps }: { fps: number }) => {

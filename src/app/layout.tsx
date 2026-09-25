@@ -7,7 +7,6 @@ import PageBackgroundLoader from "@/components/PageBackgroundLoader";
 import ScrollProgress from "@/components/ScrollProgress";
 import BookingProvider from "@/components/BookingProvider";
 import SmoothScroll from "@/components/SmoothScroll";
-import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 
 const headingFont = Space_Grotesk({
@@ -25,12 +24,12 @@ const bodyFont = Inter({
 const SITE_URL = "https://www.ahmad-hassan.dev";
 const SITE_NAME = "Ahmad Hassan";
 const SITE_DESCRIPTION =
-  "Ahmad Hassan is a full-stack developer building fast, reliable web applications with React, Next.js, and Node.js — from internal business platforms to client products.";
+  "Ahmad Hassan is a full-stack developer building fast, reliable web applications with React, Next.js, and Node.js, from internal business platforms to client products.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Ahmad Hassan — Full-Stack Developer",
+    default: "Ahmad Hassan | Full-Stack Developer",
     template: "%s | Ahmad Hassan",
   },
   description: SITE_DESCRIPTION,
@@ -60,7 +59,7 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Ahmad Hassan — Full-Stack Developer",
+    title: "Ahmad Hassan | Full-Stack Developer",
     description: SITE_DESCRIPTION,
     images: [
       {
@@ -73,7 +72,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ahmad Hassan — Full-Stack Developer",
+    title: "Ahmad Hassan | Full-Stack Developer",
     description: SITE_DESCRIPTION,
     images: ["/portfolio-image.png"],
   },
@@ -165,7 +164,6 @@ export default function RootLayout({
           <Footer />
         </BookingProvider>
         <CustomCursor />
-        <Preloader />
       </body>
     </html>
   );

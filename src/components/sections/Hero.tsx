@@ -9,7 +9,6 @@ import BookCallButton from "@/components/BookCallButton";
 import Magnetic from "@/components/Magnetic";
 import SplitReveal from "@/components/SplitReveal";
 import { fadeIn } from "@/app/variants";
-import { onIntroDone } from "@/lib/motion";
 
 const HeroScene = dynamic(() => import("@/components/HeroScene"), {
   ssr: false,
@@ -27,19 +26,14 @@ const stats = [
   { value: 15, suffix: "+", label: "Projects" },
 ];
 
-const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
+const Hero = () => {
+  const [displayedText, setDisplayedText] = useState("");
   const [ready, setReady] = useState(false);
 
-  // Only the typing loop and stat counters wait for the curtain. The hero
-  // copy itself is painted from the first byte (no opacity gate), so LCP
-  // never has to wait for the ~2.3 s intro to finish.
+  // The loading curtain is gone: the hero copy paints from the first byte,
+  // and the typing loop plus stat counters start the moment we mount.
   useEffect(() => {
-    const off = onIntroDone(() => setReady(true));
-    const failsafe = window.setTimeout(() => setReady(true), 7000);
-    return () => {
-      off();
-      window.clearTimeout(failsafe);
-    };
+    setReady(true);
   }, []);
 
   useEffect(() => {
@@ -89,7 +83,7 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
               animate="show"
               className="mb-4 text-sm uppercase tracking-[0.2em] text-muted"
             >
-              Portfolio — 2026
+              Portfolio 2026
             </motion.p>
 
             <SplitReveal
@@ -119,7 +113,7 @@ const Hero = () => {  const [displayedText, setDisplayedText] = useState("");
               animate="show"
               className="mx-auto mb-8 max-w-2xl text-base text-muted sm:text-lg xl:mx-0"
             >
-              Hello, I’m Ahmad Hassan — I help startups and product teams turn
+              Hello, I’m Ahmad Hassan. I help startups and product teams turn
               clean architecture, thoughtful UI, and rapid iteration into React,
               Next.js, and Node.js products that ship on schedule and hold up in
               production.

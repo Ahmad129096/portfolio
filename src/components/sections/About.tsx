@@ -51,13 +51,13 @@ const skillGroups = [
 ];
 
 const experience = [
-  { title: "Software Engineer — ByteForge", stage: "Dec 2025 — present" },
-  { title: "Software Engineer — Seebiz Pvt Ltd", stage: "2022 — Nov 2025" },
-  { title: "Node.js Intern — Bizzclan", stage: "2022" },
+  { title: "Software Engineer - ByteForge", stage: "Dec 2025 - present" },
+  { title: "Software Engineer - Seebiz Pvt Ltd", stage: "2022 - Nov 2025" },
+  { title: "Node.js Intern - Bizzclan", stage: "2022" },
 ];
 
 const credentials = [
-  { title: "Computer Science — COMSATS University", stage: "2018 — 2022" },
+  { title: "Computer Science - COMSATS University", stage: "2018 - 2022" },
 ];
 
 const stats = [
@@ -126,7 +126,7 @@ const About = () => {
 
             <div className="relative mb-8 border-l-2 border-accent/40 py-1 pl-4 text-left">
               <p className="italic text-muted">
-                &quot;Great software should feel invisible — fast, clear, and
+                &quot;Great software should feel invisible: fast, clear, and
                 built to last.&quot;
               </p>
             </div>
@@ -224,7 +224,7 @@ const About = () => {
             )}
 
             <p className="mt-8 border-t border-overlay/10 pt-5 text-left text-sm text-muted">
-              A good share of this work ships under NDA — full case studies and
+              A good share of this work ships under NDA: full case studies and
               client references available on request.
             </p>
           </motion.div>

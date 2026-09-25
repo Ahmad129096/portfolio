@@ -37,7 +37,7 @@ const Services = () => {
   const reducedMotion = usePrefersReducedMotion();
 
   useIsoLayoutEffect(() => {
-    // Reduced motion: no classes, no tweens — plain horizontal swiping.
+    // Reduced motion: no classes, no tweens, just plain horizontal swiping.
     if (reducedMotion) return;
 
     const section = sectionRef.current;
@@ -53,7 +53,7 @@ const Services = () => {
     };
 
     // The track must stop exactly when its right edge meets the edge that
-    // actually clips it — the section itself when pinned, its own box when
+    // actually clips it: the section itself when pinned, its own box when
     // driven. Measuring the real clip box keeps `window.innerWidth` and the
     // scrollbar from throwing the last card out of alignment.
     const distance = (fullBleed: boolean) => {
@@ -87,7 +87,7 @@ const Services = () => {
             }
           : {
               // No pin available here, so start as the section enters and
-              // finish the moment its bottom edge lands — the whole section
+              // finish the moment its bottom edge lands: the whole section
               // (and therefore every card) is on screen when it completes.
               trigger: section,
               start: "top bottom",
@@ -107,7 +107,7 @@ const Services = () => {
       }
 
       // Only claim the viewport-filling layout once the tween actually
-      // exists — otherwise the cards would be clipped with nothing to move
+      // exists; otherwise the cards would be clipped with nothing to move
       // them into view.
       if (!tween) return undefined;
 

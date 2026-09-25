@@ -21,7 +21,7 @@ const testimonialData = [
     name: "Aight619",
     position: "Client",
     message:
-      "Very good—he delivered exactly what I wanted in a short time and stayed responsive throughout the process.",
+      "Very good. He delivered exactly what I wanted in a short time and stayed responsive throughout the process.",
   },
 ];
 

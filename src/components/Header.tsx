@@ -1,5 +1,5 @@
 "use client";
-// Image removed — avatar moved to footer
+// Image removed, avatar moved to footer
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";

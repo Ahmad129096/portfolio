@@ -38,7 +38,7 @@ export const BookingProvider = ({ children }: { children: ReactNode }) => {
   const panelRef = useRef<HTMLDivElement>(null);
 
   const openBooking = useCallback(() => {
-    // Cal.com loads on first open instead of on every page view — the eager
+    // Cal.com loads on first open instead of on every page view: the eager
     // `preload` calls used to pull two full booking documents, three fonts
     // and six scripts (~2 MB) before anyone clicked anything.
     ensureCalLoaded();
@@ -101,7 +101,7 @@ export const BookingProvider = ({ children }: { children: ReactNode }) => {
                       Book a call with Ahmad Hassan
                     </p>
                     <p className="mt-0.5 text-xs text-muted sm:text-sm">
-                      Pick a duration, choose a slot — confirmation is instant.
+                      Pick a duration, choose a slot. Confirmation is instant.
                     </p>
                   </div>
                   <button
