@@ -59,12 +59,12 @@ const Header = () => {
       <div
         className={`w-full transition-all duration-300 ease-out ${
           scrolled
-            ? "mx-3 mt-3 max-w-3xl rounded-full border border-overlay/10 bg-surface/95 shadow-soft sm:mx-0 sm:max-w-4xl"
+            ? "mx-3 mt-3 max-w-[1200px] rounded-full border border-overlay/10 bg-surface/95 shadow-soft"
             : "max-w-full rounded-none border-b border-overlay/[0.08] bg-background/95"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3">
+        <div className="mx-auto flex container items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+          <div className="flex shrink-0 items-center gap-3">
             <a
               href="#home"
               className={
@@ -77,7 +77,7 @@ const Header = () => {
             </a>
             <a
               href="#home"
-              className="text-sm font-semibold tracking-[0.2em] text-text"
+              className="whitespace-nowrap text-sm font-semibold tracking-[0.2em] text-text"
             >
               AHMAD HASSAN
             </a>
@@ -111,7 +111,7 @@ const Header = () => {
             })}
           </nav>
 
-          <div className="flex items-center gap-3 mr-10">
+          <div className="mr-10 flex shrink-0 items-center gap-3">
             <div className="hidden items-center gap-1 sm:flex">
               {socialLinks.slice(0, 2).map((link) => (
                 <a
@@ -129,7 +129,7 @@ const Header = () => {
             </div>
             <BookCallButton
               variant="compact"
-              className="hidden sm:inline-flex"
+              className="hidden whitespace-nowrap sm:inline-flex"
             />
           </div>
         </div>
