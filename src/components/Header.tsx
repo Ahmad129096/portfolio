@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import BookCallButton from "@/components/BookCallButton";
+import SectionLink from "@/components/SectionLink";
 import { socialLinks } from "@/components/Socials";
 
 const navData = [
@@ -64,8 +65,8 @@ const Header = () => {
       >
         <div className="mx-auto flex container items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <div className="flex shrink-0 items-center gap-3">
-            <a
-              href="#home"
+            <SectionLink
+              id="home"
               className={
                 scrolled
                   ? "hidden"
@@ -73,22 +74,22 @@ const Header = () => {
               }
             >
               A
-            </a>
-            <a
-              href="#home"
+            </SectionLink>
+            <SectionLink
+              id="home"
               className="whitespace-nowrap text-sm font-semibold tracking-[0.2em] text-text"
             >
               AHMAD HASSAN
-            </a>
+            </SectionLink>
           </div>
 
           <nav className="hidden items-center gap-8 xl:flex">
             {navData.map((link) => {
               const isActive = activeId === link.id;
               return (
-                <a
+                <SectionLink
                   key={link.id}
-                  href={`#${link.id}`}
+                  id={link.id}
                   className={`relative px-1 py-1 text-sm transition ${
                     isActive ? "text-accent" : "text-muted hover:text-text"
                   }`}
@@ -105,7 +106,7 @@ const Header = () => {
                       }}
                     />
                   )}
-                </a>
+                </SectionLink>
               );
             })}
           </nav>

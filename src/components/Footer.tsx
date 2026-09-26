@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { socialLinks } from "@/components/Socials";
+import SectionLink from "@/components/SectionLink";
 
 const navLinks = [
   { name: "Home", id: "home" },
@@ -24,14 +26,20 @@ const Footer = () => {
           className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
         >
           {navLinks.map((link) => (
-            <a
+            <SectionLink
               key={link.id}
-              href={`#${link.id}`}
+              id={link.id}
               className="text-sm text-muted transition hover:text-accent"
             >
               {link.name}
-            </a>
+            </SectionLink>
           ))}
+          <Link
+            href="/case-studies"
+            className="text-sm text-muted transition hover:text-accent"
+          >
+            Case Studies
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">

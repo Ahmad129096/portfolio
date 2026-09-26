@@ -74,7 +74,23 @@ const SmoothScroll = () => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    window.__lenis?.scrollTo(0, { immediate: true });
+
+    // Route change: honour a hash first (e.g. /case-studies -> /#work),
+    // otherwise start the new page at the top.
+    const hash = window.location.hash;
+    const target =
+      hash.length > 1
+        ? document.querySelector<HTMLElement>(
+            // hash may contain characters that are not valid CSS selectors
+            `#${CSS.escape(hash.slice(1))}`,
+          )
+        : null;
+
+    if (target) {
+      window.__lenis?.scrollTo(target, { immediate: true, offset: -88 });
+    } else {
+      window.__lenis?.scrollTo(0, { immediate: true });
+    }
     ScrollTrigger.refresh();
   }, [pathname]);
 
