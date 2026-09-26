@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import ThemeToggle from "@/components/ThemeToggle";
 import BookCallButton from "@/components/BookCallButton";
 import { socialLinks } from "@/components/Socials";
 
@@ -111,7 +110,7 @@ const Header = () => {
             })}
           </nav>
 
-          <div className="mr-10 flex shrink-0 items-center gap-3">
+          <div className="flex shrink-0 items-center gap-3">
             <div className="hidden items-center gap-1 sm:flex">
               {socialLinks.slice(0, 2).map((link) => (
                 <a
@@ -132,12 +131,6 @@ const Header = () => {
               className="hidden whitespace-nowrap sm:inline-flex"
             />
           </div>
-        </div>
-      </div>
-
-      <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-end pr-4 pt-3">
-        <div className="pointer-events-auto">
-          <ThemeToggle />
         </div>
       </div>
     </header>

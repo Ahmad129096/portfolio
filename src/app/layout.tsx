@@ -117,16 +117,6 @@ const websiteJsonLd = {
   url: SITE_URL,
 };
 
-const THEME_INIT = `
-(function () {
-  try {
-    if (localStorage.getItem("theme") === "light") {
-      document.documentElement.classList.remove("dark");
-    }
-  } catch (e) {}
-})();
-`;
-
 export default function RootLayout({
   children,
 }: {
@@ -135,10 +125,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <script
-          id="theme-init"
-          dangerouslySetInnerHTML={{ __html: THEME_INIT }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
