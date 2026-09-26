@@ -134,9 +134,9 @@ body::before {
       0 0 0 1px rgb(201 162 77 / 0.2);
   }
 
-  /* Sticky full-bleed project cards already move with scroll, so they get a
-     ring + glow instead of a translate. Only box-shadow/border transition, since
-     transform and filter are driven frame-by-frame by GSAP ScrollTrigger. */
+  /* Full-bleed project cards slide horizontally inside the Swiper carousel, so
+     they get a ring + glow instead of a translate: only box-shadow/border
+     transition, keeping Swiper's drag transform jank-free. */
   .project-card-glow {
     transition:
       box-shadow 0.5s ease,

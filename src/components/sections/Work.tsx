@@ -1,5 +1,5 @@
 "use client";
-import WorkGrid from "@/components/WorkGrid";
+import WorkCarousel from "@/components/WorkCarousel";
 import { motion } from "framer-motion";
 import SplitReveal from "@/components/SplitReveal";
 import { fadeIn } from "@/app/variants";
@@ -52,7 +52,7 @@ const Work = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0 }}
         >
-          <WorkGrid />
+          <WorkCarousel />
         </motion.div>
       </div>
     </section>
