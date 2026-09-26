@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Sparkles } from "@react-three/drei";
 import * as THREE from "three";
+import FrameThrottle from "@/components/FrameThrottle";
 import { useIsoLayoutEffect, usePrefersReducedMotion } from "@/lib/motion";
 
 const vertexShader = /* glsl */ `
@@ -126,23 +127,6 @@ const Aurora = ({ dark }: { dark: boolean }) => {
       />
     </mesh>
   );
-};
-
-/**
- * Re-renders a `frameloop="demand"` canvas on a fixed cadence. Rendering
- * every rAF frame kept the main thread saturated under CPU throttling (33 s
- * of the 39 s main-thread time was unclassified "other", all from this loop); 30 fps
- * is invisible for a slow-moving aurora and halves that cost.
- */
-const FrameThrottle = ({ fps }: { fps: number }) => {
-  const invalidate = useThree((state) => state.invalidate);
-
-  useEffect(() => {
-    const id = window.setInterval(() => invalidate(), 1000 / fps);
-    return () => window.clearInterval(id);
-  }, [invalidate, fps]);
-
-  return null;
 };
 
 /**

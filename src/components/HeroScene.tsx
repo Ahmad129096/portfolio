@@ -4,6 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, Float, Lightformer, Sparkles } from "@react-three/drei";
 import { MeshTransmissionMaterial } from "@react-three/drei";
 import * as THREE from "three";
+import FrameThrottle from "@/components/FrameThrottle";
 import { useIsoLayoutEffect, usePrefersReducedMotion } from "@/lib/motion";
 
 const GOLD = "#c9a24d";
@@ -203,8 +204,13 @@ const HeroScene = () => {
           powerPreference: "high-performance",
         }}
         dpr={[1, 1.75]}
-        frameloop={inView && !reducedMotion ? "always" : "never"}
+        /* Demand-driven at 30 fps instead of `always`: on phones this canvas
+           shares the main thread with touch scrolling, and an unbroken 60 fps
+           loop starves it. The jewel's motion is slow enough that 30 fps is
+           indistinguishable (same reasoning as the aurora's FrameThrottle). */
+        frameloop={inView && !reducedMotion ? "demand" : "never"}
       >
+        {inView && !reducedMotion && <FrameThrottle fps={30} />}
         <Scene simple={simple} />
       </Canvas>
     </div>
