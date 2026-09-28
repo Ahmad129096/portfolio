@@ -64,8 +64,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/portfolio-image.png",
-        width: 637,
-        height: 578,
+        width: 1122,
+        height: 1402,
         alt: "Portrait of Ahmad Hassan",
       },
     ],

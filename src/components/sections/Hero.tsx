@@ -9,6 +9,7 @@ import BookCallButton from "@/components/BookCallButton";
 import Magnetic from "@/components/Magnetic";
 import SplitReveal from "@/components/SplitReveal";
 import { fadeIn } from "@/app/variants";
+import { useWebGLEnabled } from "@/lib/webgl";
 
 const HeroScene = dynamic(() => import("@/components/HeroScene"), {
   ssr: false,
@@ -29,6 +30,7 @@ const stats = [
 const Hero = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [ready, setReady] = useState(false);
+  const webgl = useWebGLEnabled();
 
   // The loading curtain is gone: the hero copy paints from the first byte,
   // and the typing loop plus stat counters start the moment we mount.
@@ -178,7 +180,7 @@ const Hero = () => {
             </p>
             <div className="relative flex h-[280px] w-full max-w-[280px] items-center justify-center sm:h-[320px] sm:max-w-[320px] xl:h-[420px] xl:max-w-[360px]">
               <div className="pointer-events-none absolute -inset-16 -z-10">
-                <HeroScene />
+                {webgl && <HeroScene />}
               </div>
               <Avatar />
             </div>
