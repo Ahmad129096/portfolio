@@ -24,22 +24,24 @@ const bodyFont = Inter({
 const SITE_URL = "https://www.ahmad-hassan.dev";
 const SITE_NAME = "Ahmad Hassan";
 const SITE_DESCRIPTION =
-  "Ahmad Hassan is a full-stack developer building fast, reliable web applications with React, Next.js, and Node.js, from internal business platforms to client products.";
+  "Ahmad Hassan is a Full Stack React & Node.js Developer in Pakistan building fast, reliable web applications with React, Next.js, and Node.js, from MVPs to production-ready products for startups.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Ahmad Hassan | Full-Stack Developer",
+    default: "Ahmad Hassan | Full Stack React & Node.js Developer in Pakistan",
     template: "%s | Ahmad Hassan",
   },
   description: SITE_DESCRIPTION,
   keywords: [
     "Ahmad Hassan",
-    "full-stack developer",
-    "Next.js developer",
-    "React developer",
-    "Node.js developer",
-    "web developer portfolio",
+    "full stack developer pakistan",
+    "mern stack developer pakistan",
+    "react developer pakistan",
+    "node js developer pakistan",
+    "nextjs developer pakistan",
+    "web developer pakistan",
+    "freelance developer pakistan",
   ],
   authors: [{ name: "Ahmad Hassan", url: SITE_URL }],
   creator: "Ahmad Hassan",
@@ -89,9 +91,17 @@ const personJsonLd = {
   "@type": "Person",
   name: "Ahmad Hassan",
   url: SITE_URL,
-  jobTitle: "Full-Stack Developer",
+  jobTitle: "Full Stack React & Node.js Developer",
   description: SITE_DESCRIPTION,
   image: `${SITE_URL}/portfolio-image.png`,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "PK",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Pakistan",
+  },
   sameAs: [
     "https://github.com/ahmad129096",
     "https://www.linkedin.com/in/ahmad-hassan-792619140/",

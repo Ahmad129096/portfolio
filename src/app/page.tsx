@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <CaseStudySpotlight />
+      {/* <CaseStudySpotlight /> */}
       <EngineeringEngine />
       <About />
       <Services />
