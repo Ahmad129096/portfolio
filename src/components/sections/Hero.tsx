@@ -94,9 +94,9 @@ const Hero = () => {
               stagger={0.06}
               className="mb-4 text-4xl font-semibold leading-tight sm:text-5xl xl:text-6xl"
             >
-              Full-Stack{" "}
-              <span className="text-accent">React &amp; Node.js</span>
-              <br /> engineer for high-growth startups.
+              Ahmad Hassan{" "}
+              <span className="text-accent">Full-stack engineer</span>
+              <br /> for data-heavy products.
             </SplitReveal>
 
             <motion.p
@@ -106,7 +106,10 @@ const Hero = () => {
               className="mb-6 min-h-[1.75rem] font-heading text-lg text-accent"
             >
               {displayedText}
-              <span className="ml-0.5 inline-block w-[2px] animate-pulse bg-accent align-middle" style={{ height: "1.1em" }} />
+              <span
+                className="ml-0.5 inline-block w-[2px] animate-pulse bg-accent align-middle"
+                style={{ height: "1.1em" }}
+              />
             </motion.p>
 
             <motion.p
@@ -115,10 +118,9 @@ const Hero = () => {
               animate="show"
               className="mx-auto mb-8 max-w-2xl text-base text-muted sm:text-lg xl:mx-0"
             >
-              Hello, I’m Ahmad Hassan. I help startups and product teams turn
-              clean architecture, thoughtful UI, and rapid iteration into React,
-              Next.js, and Node.js products that ship on schedule and hold up in
-              production.
+              I build production systems with React, Next.js, and Node.js where
+              latency, correctness, and maintainability actually matter. The
+              work speaks in load times and saved hours, not buzzwords.
             </motion.p>
 
             <motion.div
@@ -136,10 +138,10 @@ const Hero = () => {
               <motion.a
                 whileTap={{ scale: 0.96 }}
                 whileHover={{ scale: 1.03 }}
-                href="#work"
+                href="#case-studies"
                 className="btn-secondary w-full justify-center sm:w-auto"
               >
-                View projects
+                View shipped work
                 <HiArrowRight />
               </motion.a>
             </motion.div>
