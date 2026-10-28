@@ -79,15 +79,6 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 xl:grid-cols-[1.1fr_0.9fr] xl:gap-10">
           <div className="mx-auto max-w-2xl text-center xl:mx-0 xl:text-left">
-            <motion.p
-              variants={fadeIn("down", 0.05)}
-              initial="show"
-              animate="show"
-              className="mb-4 text-sm uppercase tracking-[0.2em] text-muted"
-            >
-              Portfolio 2026
-            </motion.p>
-
             <SplitReveal
               as="h1"
               trigger="load"
