@@ -120,19 +120,22 @@ const Hero = () => {
               animate="show"
               className="mb-10 flex flex-col items-center gap-4 sm:flex-row xl:items-start"
             >
-              <Magnetic strength={0.3} className="w-full sm:w-auto">
-                <BookCallButton
-                  variant="primary"
-                  className="w-full justify-center sm:w-auto"
-                />
-              </Magnetic>
               <motion.a
                 whileTap={{ scale: 0.96 }}
                 whileHover={{ scale: 1.03 }}
                 href="#case-studies"
-                className="btn-secondary w-full justify-center sm:w-auto"
+                className="btn-primary w-full justify-center sm:w-auto"
               >
                 View shipped work
+                <HiArrowRight />
+              </motion.a>
+              <motion.a
+                whileTap={{ scale: 0.96 }}
+                whileHover={{ scale: 1.03 }}
+                href="#contact"
+                className="btn-secondary w-full justify-center sm:w-auto"
+              >
+                Get in touch
                 <HiArrowRight />
               </motion.a>
             </motion.div>

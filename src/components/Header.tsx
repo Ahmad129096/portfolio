@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import BookCallButton from "@/components/BookCallButton";
 import SectionLink from "@/components/SectionLink";
 import { socialLinks } from "@/components/Socials";
 
@@ -127,10 +126,6 @@ const Header = () => {
                 </a>
               ))}
             </div>
-            <BookCallButton
-              variant="compact"
-              className="hidden whitespace-nowrap sm:inline-flex"
-            />
           </div>
         </div>
       </div>
