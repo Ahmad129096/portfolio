@@ -383,7 +383,7 @@ html.has-custom-cursor [contenteditable="true"] {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-left 26s linear infinite;
+  animation: marquee-left var(--duration, 26s) linear infinite;
 }
 
 .marquee-track-reverse {
